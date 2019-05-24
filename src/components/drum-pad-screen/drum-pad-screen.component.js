@@ -47,8 +47,6 @@ DrumPadScreen.propTypes = {
   pads: PropTypes.object,
 };
 
-function mapStateToProps({ pads }) {
-  return { pads };
-}
+const mapStateToProps = ({ pads }) => ({ pads });
 
 export default connect(mapStateToProps)(DrumPadScreen);

@@ -59,7 +59,7 @@ class DrumPadForm extends React.Component {
   }
 }
 
-function mapStateToProps({ pads, kits, channels }) {
+const mapStateToProps = ({ pads, kits, channels }) => {
   let sounds = [];
 
   Object.keys(kits.all).map(k => {

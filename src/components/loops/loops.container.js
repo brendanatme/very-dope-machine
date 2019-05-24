@@ -19,8 +19,6 @@ Loops.propTypes = {
   loops: PropTypes.object,
 };
 
-function mapStateToProps({ loops }) {
-  return { loops };
-}
+const mapStateToProps = ({ loops }) => ({ loops });
 
 export default connect(mapStateToProps)(Loops);

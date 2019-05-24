@@ -3,6 +3,7 @@
  */
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { getNextFromCollection, getPreviousFromCollection } from '../../helpers';
 import { addPreset, removePreset, loadPreset } from '../../store/presets.state';
 import PresetsComponent from './presets.component';
 
@@ -30,16 +31,12 @@ class Presets extends Component {
   }
 
   loadPreviousPreset() {
-    const selectedIndex = this.props.presets.all.indexOf(this.props.presets.selected);
-    const previousIndex = selectedIndex === 0? this.props.presets.all.length - 1: selectedIndex - 1;
-    const key = this.props.presets.all[previousIndex];
+    const key = getPreviousFromCollection(this.props.presets.all, this.props.presets.selected);
     this.props.loadPreset(key);
   }
 
   loadNextPreset() {
-    const selectedIndex = this.props.presets.all.indexOf(this.props.presets.selected);
-    const nextIndex = selectedIndex >= this.props.presets.all.length - 1? 0: selectedIndex + 1;
-    const key = this.props.presets.all[nextIndex];
+    const key = getNextFromCollection(this.props.presets.all, this.props.presets.selected);
     this.props.loadPreset(key);
   }
 
@@ -67,8 +64,6 @@ class Presets extends Component {
   }
 }
 
-function mapStateToProps({ presets }) {
-  return { presets };
-}
+const mapStateToProps = ({ presets }) => ({ presets });
 
 export default connect(mapStateToProps, { addPreset, removePreset, loadPreset })(Presets);

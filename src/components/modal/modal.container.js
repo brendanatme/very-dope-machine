@@ -14,7 +14,7 @@ import styles from './modal.component.css';
 
 const ChildrenTypes = {
   DrumPadForm,
-  Hotkeys
+  Hotkeys,
 };
 
 class Modal extends React.Component {
@@ -70,8 +70,9 @@ class Modal extends React.Component {
   }
 }
 
-function mapStateToProps({ modal }) {
-  return { content: modal.content, options: modal.options };
-}
+const mapStateToProps = ({ modal }) => ({
+  content: modal.content,
+  options: modal.options,
+});
 
 export default connect(mapStateToProps, { closeModal })(Modal);

@@ -16,6 +16,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { switchKit } from '../../store/kits.state';
+import { getNextFromCollection, getPreviousFromCollection } from '../../helpers';
 import KitSwitcherComponent from './kit-switcher.component';
 
 class KitSwitcher extends React.Component {
@@ -38,17 +39,13 @@ class KitSwitcher extends React.Component {
 
   selectNextKit() {
     const kitsArray = Object.keys(this.props.kits.all);
-    const selectedIndex = kitsArray.indexOf(this.props.kits.selected);
-    const nextIndex = selectedIndex >= kitsArray.length - 1? 0: selectedIndex + 1;
-    const key = kitsArray[nextIndex];
+    const key = getNextFromCollection(kitsArray, this.props.kits.selected);
     this.selectKit(key);
   }
 
   selectPreviousKit() {
     const kitsArray = Object.keys(this.props.kits.all);
-    const selectedIndex = kitsArray.indexOf(this.props.kits.selected);
-    const previousIndex = selectedIndex === 0? kitsArray.length - 1: selectedIndex - 1;
-    const key = kitsArray[previousIndex];
+    const key = getPreviousFromCollection(kitsArray, this.props.kits.selected);
     this.selectKit(key);
   }
 
@@ -72,8 +69,6 @@ class KitSwitcher extends React.Component {
   }
 }
 
-function mapStateToProps({ kits, pads }) {
-  return { kits, pads };
-}
+const mapStateToProps = ({ kits, pads }) => ({ kits, pads });
 
 export default connect(mapStateToProps, { switchKit })(KitSwitcher);
