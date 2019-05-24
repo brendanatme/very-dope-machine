@@ -4,6 +4,8 @@ Very. Dope. Machine.
 
 ## TODO
 
+1. Rethink Modal
+1. use showOnMount HOC
 1. when recording is finished, create loop object
 
     Loop object:
@@ -19,14 +21,10 @@ Very. Dope. Machine.
     build out loop component
     include play button
 
-2. output all channels, including HTML5Channels to recorder
+1. output all channels, including HTML5Channels to recorder
+1. Upgrade React version and possibly migrate boilerplate
 
-<p align="center"><img src="https://cloud.githubusercontent.com/assets/3129129/22811426/bb69dc06-ef0c-11e6-8092-a0bea9060b35.png"/></p>
-
-[![Build status: Linux](https://img.shields.io/travis/coryhouse/react-slingshot.svg?style=flat-square)](https://travis-ci.org/coryhouse/react-slingshot)
-[![Build status: Windows](https://img.shields.io/appveyor/ci/coryhouse/react-slingshot/master.svg?style=flat-square)](https://ci.appveyor.com/project/coryhouse/react-slingshot/branch/master)
-[![Dependency Status](https://david-dm.org/coryhouse/react-slingshot.svg?style=flat-square)](https://david-dm.org/coryhouse/react-slingshot)
-[![Coverage Status](https://img.shields.io/coveralls/coryhouse/react-slingshot/master.svg?style=flat-square)](https://coveralls.io/github/coryhouse/react-slingshot?branch=master)
+## Boilerplate: React slingshot
 
 React Slingshot is a comprehensive starter kit for rapid application development using React.
 
@@ -95,5 +93,3 @@ Slingshot offers a rich development experience using the following technologies:
 | [npm Scripts](https://docs.npmjs.com/misc/scripts)| Glues all this together in a handy automated build. | [Pluralsight course](https://www.pluralsight.com/courses/npm-build-tool-introduction), [Why not Gulp?](https://medium.com/@housecor/why-i-left-gulp-and-grunt-for-npm-scripts-3d6853dd22b8#.vtaziro8n)  |
 
 The starter kit includes a working example app that puts all of the above to use.
-## Questions?
-Check out the [FAQ](/docs/FAQ.md)
