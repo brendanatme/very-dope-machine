@@ -7,19 +7,20 @@
 //
 // usage: createPlayer(channelIds)(MyComponent);
 //
-import React, { PropTypes } from 'react';
-import Player from './Player';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Player from './player';
 
-export default function createPlayerFactory(channelIds) {
+export const createPlayerFactory = (channelIds) => {
   const player = new Player(channelIds);
-  return function createPlayer(Composed) {
+  return (Composed) => {
     return class PlayerConnection extends React.Component {
       static childContextTypes = {
-        player: PropTypes.object
+        player: PropTypes.object,
       }
 
       getChildContext() {
-        return { player: player };
+        return { player };
       }
 
       render() {
@@ -27,4 +28,4 @@ export default function createPlayerFactory(channelIds) {
       }
     };
   };
-}
+};

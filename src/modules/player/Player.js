@@ -7,7 +7,7 @@
 // or to communicate with the recorder
 //
 import Channel from './Channel';
-import HTML5Channel from './HTML5Channel';
+import HTML5Channel from './html5-channel';
 import Recorder from './Recorder';
 
 export default class Player {

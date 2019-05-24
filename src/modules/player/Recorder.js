@@ -9,8 +9,7 @@
 // by the connectToRecorder method
 // has access to the startRecording() and stopRecording() methods
 //
-
-class Recorder {
+export default class Recorder {
   isSetup = false
 
   // wait to setup until a React component has called us
@@ -73,5 +72,3 @@ class Recorder {
     this.recorder.stop();
   }
 }
-
-export default Recorder;

@@ -1,4 +1,4 @@
-export { default as createPlayer } from './createPlayer';
-export { default as connectToPlayer } from './connectToPlayer';
-export { default as connectToRecorder } from './connectToRecorder';
-export { default as connectToLoop } from './connectToLoop';
+export { connectToLoop } from './connect-to-loop';
+export { connectToPlayerFactory as connectToPlayer } from './connect-to-player';
+export { connectToRecorder } from './connect-to-recorder';
+export { createPlayerFactory as createPlayer } from './create-player';

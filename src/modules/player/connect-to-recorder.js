@@ -1,9 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function connectToRecorder(Composed) {
-  return class RecorderConnection extends Component {
+export const connectToRecorder = (Composed) => {
+  return class RecorderConnection extends React.Component {
     static contextTypes = {
-      player: PropTypes.object
+      player: PropTypes.object,
     }
 
     constructor(props, context) {
@@ -16,4 +17,4 @@ export default function connectToRecorder(Composed) {
       return <Composed recorder={this.player.recorder} {...this.props} />;
     }
   };
-}
+};

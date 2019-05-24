@@ -1,13 +1,14 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function connectToLoop(Composed) {
-  class LoopConnection extends Component {
+export const connectToLoop = (Composed) => {
+  return class LoopConnection extends React.Component {
     static propTypes = {
-      id: PropTypes.string
+      id: PropTypes.string,
     }
 
     static contextTypes = {
-      player: PropTypes.object
+      player: PropTypes.object,
     }
 
     constructor(props, context) {
@@ -24,7 +25,5 @@ export default function connectToLoop(Composed) {
         />
       );
     }
-  }
-
-  return LoopConnection;
-}
+  };
+};

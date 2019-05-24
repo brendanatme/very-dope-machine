@@ -11,24 +11,20 @@ import Nav from '../nav';
 import Modal from '../modal';
 import styles from './app.component.css';
 
-const App = props => {
-  const path = props.location.pathname;
-
-  return (
-    <div className={styles.app}>
-      <Nav />
-      <main role="main" className={styles.main}>
-        <ReactCSSTransitionGroup
-          transitionName={transition}
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={250}>
-          {React.cloneElement(props.children, { key: path })}
-        </ReactCSSTransitionGroup>
-      </main>
-      <Modal />
-    </div>
-  );
-};
+const App = props => (
+  <div className={styles.app}>
+    <Nav />
+    <main role="main" className={styles.main}>
+      <ReactCSSTransitionGroup
+        transitionName={transition}
+        transitionEnterTimeout={500}
+        transitionLeaveTimeout={250}>
+        {React.cloneElement(props.children, { key: props.location.pathname })}
+      </ReactCSSTransitionGroup>
+    </main>
+    <Modal />
+  </div>
+);
 
 App.propTypes = {
   children: PropTypes.object,

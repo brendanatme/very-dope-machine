@@ -10,7 +10,7 @@
 //
 import { Howl } from 'howler';
 
-class Channel {
+export default class Channel {
   // sounds hash
   // key: Src {String}
   // val: Sound {Object}
@@ -82,5 +82,3 @@ class Channel {
     }
   }
 }
-
-export default Channel;
