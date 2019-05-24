@@ -3,24 +3,9 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { arrayFromIterator } from '../../helpers';
 
 const MIDI_INPUT = '[object MIDIInput]';
-
-const iterate = (iterator, cb) => {
-  for (
-    let item = iterator.next();
-    item && !item.done;
-    item = iterator.next()
-  ) {
-    cb(item.value);
-  }
-};
-
-const arrayFromIterator = iterator => {
-  let arr = [];
-  iterate(iterator, item => arr.push(item));
-  return arr;
-};
 
 class MidiConnection extends React.Component {
   static propTypes = {
