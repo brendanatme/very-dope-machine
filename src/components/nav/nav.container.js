@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Link, IndexLink, browserHistory } from 'react-router';
 import KeyHandler, { KEYDOWN } from 'react-key-handler';
 import { connect } from 'react-redux';
-import { openModal } from '../../actions/modalActions';
+import { openModal } from '../../store/modal.state';
 import styles from './nav.component.css';
 
 class Nav extends React.Component {

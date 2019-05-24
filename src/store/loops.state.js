@@ -1,5 +1,7 @@
 import Immutable from 'immutable';
-import loopsData from '../data/loops.json';
+
+// data
+const loopsData = {};
 
 // action types
 export const ADD_LOOP = 'add_loop';

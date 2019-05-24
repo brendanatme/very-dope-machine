@@ -4,7 +4,7 @@
 // we need to supply the pads with sounds sources
 // from the new selected kit
 //
-import { IGNORE } from '../constants/actionTypes';
+import { IGNORE } from '../constants';
 import { SWITCH_KIT } from '../store/kits.state';
 import { UPDATE_PAD } from '../store/pads.state';
 

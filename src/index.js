@@ -6,8 +6,8 @@ import { Router, browserHistory } from 'react-router';
 import Lockr from 'lockr';
 import { configureStore } from './store';
 import routes from './routes';
-import { NAMESPACE } from './constants/appKeys';
-import { LOAD_PRESET } from './constants/actionTypes';
+import { NAMESPACE } from './constants';
+import { LOAD_PRESET } from './store/presets.state';
 import { SWITCH_KIT } from './store/kits.state';
 require('./favicon.ico'); // Tell webpack to load favicon.ico
 import './styles/global.css'; // Import global CSS (ignore CSS Modules)

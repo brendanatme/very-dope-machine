@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import KeyHandler, { KEYUP } from 'react-key-handler';
-import { closeModal } from '../../actions/modalActions';
+import { closeModal } from '../../store/modal.state';
 import transition from '../../styles/mixins/open_wh.css';
 import DrumPadForm from '../drum-pad-form';
 import Hotkeys from '../hotkeys';

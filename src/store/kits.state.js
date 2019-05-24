@@ -28,4 +28,4 @@ export const reducer = function(state = kitsData, { type, payload }) {
     default:
       return state.toJS();
   }
-}
+};

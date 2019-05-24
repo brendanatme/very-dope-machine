@@ -7,7 +7,7 @@ import KeyHandler, { KEYDOWN, KEYUP } from 'react-key-handler';
 import { connect } from 'react-redux';
 import { hasTouch } from '../../helpers';
 import { connectToPlayer } from '../../modules/player';
-import { openModal } from '../../actions/modalActions';
+import { openModal } from '../../store/modal.state';
 import MidiConnection from '../midi-connection';
 import PadCircle from '../pad-circle';
 import styles from './drum-pad.component.css';

@@ -6,8 +6,8 @@
 //
 import Lockr from 'lockr';
 
-import { NAMESPACE } from '../constants/appKeys';
-import { ADD_PRESET, LOAD_PRESET } from '../constants/actionTypes';
+import { NAMESPACE } from '../constants';
+import { ADD_PRESET, LOAD_PRESET } from '../store/presets.state';
 
 export default function writeToStorageFactory(excludeReducers) {
   return ({ getState }) => next => action => {

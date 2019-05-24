@@ -3,7 +3,7 @@
  */
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { addPreset, removePreset, loadPreset } from '../../actions/presetActions';
+import { addPreset, removePreset, loadPreset } from '../../store/presets.state';
 import PresetsComponent from './presets.component';
 
 class Presets extends Component {

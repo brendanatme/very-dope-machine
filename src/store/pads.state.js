@@ -22,4 +22,4 @@ export const reducer = function(state = padData, { type, payload }) {
     default:
       return state.toJS();
   }
-}
+};
