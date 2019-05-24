@@ -4,10 +4,11 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import Lockr from 'lockr';
-import configureStore from './store/configureStore';
+import { configureStore } from './store';
 import routes from './routes';
 import { NAMESPACE } from './constants/appKeys';
-import { SWITCH_KIT, LOAD_PRESET } from './constants/actionTypes';
+import { LOAD_PRESET } from './constants/actionTypes';
+import { SWITCH_KIT } from './store/kits.state';
 require('./favicon.ico'); // Tell webpack to load favicon.ico
 import './styles/global.css'; // Import global CSS (ignore CSS Modules)
 
@@ -17,12 +18,12 @@ const store = configureStore({ presets });
 const { kits } = store.getState();
 store.dispatch({
   type: SWITCH_KIT,
-  payload: kits.selected
+  payload: kits.selected,
 });
 if (presets && presets.all) {
   store.dispatch({
     type: LOAD_PRESET,
-    payload: presets.selected
+    payload: presets.selected,
   });
 }
 

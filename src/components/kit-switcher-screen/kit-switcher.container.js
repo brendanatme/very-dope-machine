@@ -15,14 +15,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { switchKit } from '../../actions/kitActions';
+import { switchKit } from '../../store/kits.state';
 import KitSwitcherComponent from './kit-switcher.component';
 
 class KitSwitcher extends React.Component {
   static propTypes = {
     kits: PropTypes.object,
     pads: PropTypes.object,
-    switchKit: PropTypes.func
+    switchKit: PropTypes.func,
   }
 
   handleKeyDown = ({ key }) => {

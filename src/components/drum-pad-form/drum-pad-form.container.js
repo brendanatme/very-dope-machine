@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { updatePad } from '../../actions/padActions';
+import { updatePad } from '../../store/pads.state';
 import DrumPadFormComponent from './drum-pad-form.component';
 
 class DrumPadForm extends React.Component {

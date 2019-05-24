@@ -5,7 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { connectToLoop } from '../../modules/player';
-import { removeLoop } from '../../actions/loopActions';
+import { removeLoop } from '../../store/loops.state';
 import CloseButton from '../close-button';
 import PlayButton from '../play-button';
 import styles from './loop.component.css';

@@ -3,7 +3,7 @@ import {
   OPEN_MODAL
 } from '../constants/actionTypes';
 
-export function closeModal(onClose) {
+export const closeModal = (onClose) => {
   if (onClose && typeof onClose === 'function') {
     onClose();
   }
@@ -16,9 +16,7 @@ export function closeModal(onClose) {
   };
 }
 
-export function openModal(content) {
-  return {
-    type: OPEN_MODAL,
-    payload: content
-  };
-}
+export const openModal = (content) => ({
+  type: OPEN_MODAL,
+  payload: content
+});

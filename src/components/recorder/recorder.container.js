@@ -20,7 +20,7 @@ import PropTypes from 'prop-types';
 import KeyHandler, { KEYUP } from 'react-key-handler';
 import { connect } from 'react-redux';
 import { connectToRecorder } from '../../modules/player';
-import { addLoop, removeLoop } from '../../actions/loopActions';
+import { addLoop, removeLoop } from '../../store/loops.state';
 import RecCircle from '../rec-circle';
 import styles from './recorder.component.css';
 

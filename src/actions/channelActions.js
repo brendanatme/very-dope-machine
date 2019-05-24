@@ -6,37 +6,27 @@ import {
   REMOVE_SOUND
 } from '../constants/actionTypes';
 
-export function addSound(soundSettings) {
-  return {
-    type: ADD_SOUND,
-    payload: soundSettings
-  };
-}
+export const addSound = (soundSettings) => ({
+  type: ADD_SOUND,
+  payload: soundSettings
+});
 
-export function playSound(soundSettings) {
-  return {
-    type: PLAY_SOUND,
-    payload: soundSettings
-  };
-}
+export const playSound = (soundSettings) => ({
+  type: PLAY_SOUND,
+  payload: soundSettings
+});
 
-export function updateSound(soundSettings) {
-  return {
-    type: UPDATE_SOUND,
-    payload: soundSettings
-  };
-}
+export const updateSound = (soundSettings) => ({
+  type: UPDATE_SOUND,
+  payload: soundSettings
+});
 
-export function removeSound(soundSettings) {
-  return {
-    type: REMOVE_SOUND,
-    payload: soundSettings
-  };
-}
+export const removeSound = (soundSettings) => ({
+  type: REMOVE_SOUND,
+  payload: soundSettings
+});
 
-export function stopCurrentSound(id) {
-  return {
-    type: STOP_SOUND,
-    payload: id
-  };
-}
+export const stopCurrentSound = (id) => ({
+  type: STOP_SOUND,
+  payload: id
+});
