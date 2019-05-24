@@ -1,0 +1,12 @@
+@import "../core/variables";
+@import "../core/media";
+
+.loops {
+  width: var(--sidebar-width);
+}
+
+@media (--mobile) {
+  .loops {
+    display: none;
+  }
+}

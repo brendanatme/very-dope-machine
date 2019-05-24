@@ -1,0 +1,23 @@
+@import "../core/variables";
+
+.enter {
+  height: 1px;
+  width: 1px;
+
+  &.enterActive {
+    height: 434px;
+    width: 492px;
+    transition: width .25s var(--ease-out), height .5s var(--ease-out) .25s;
+  }
+}
+
+.leave {
+  height: 434px;
+  width: 492px;
+
+  &.leaveActive {
+    height: 1px;
+    width: 1px;
+    transition: height .25s var(--ease-out), width .25s var(--ease-out) .25s;
+  }
+}

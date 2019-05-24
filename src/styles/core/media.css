@@ -1,0 +1,4 @@
+@custom-media --mobile only screen and (max-width: 767px);
+@custom-media --tablet only screen and (min-width: 768px);
+@custom-media --desktop only screen and (min-width: 1025px);
+@custom-media --tablet-down only screen and (max-width: 1024px);

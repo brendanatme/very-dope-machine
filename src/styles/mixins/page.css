@@ -1,0 +1,23 @@
+@import "../core/variables";
+
+.enter {
+  opacity: 0;
+  //transform: translateX(-100%);
+
+  &.enterActive {
+    opacity: 1;
+    //transform: translateX(0px);
+    transition: all .5s var(--ease-out);
+  }
+}
+
+.leave {
+  opacity: 1;
+  //transform: translateX(0px);
+
+  &.leaveActive {
+    opacity: 0;
+    //transform: translateX(100%);
+    transition: all .25s var(--ease-out);
+  }
+}

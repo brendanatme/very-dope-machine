@@ -1,0 +1,135 @@
+:root {
+  --fill: {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  --bg: {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  --ib: {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  --center: {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  --vcenterer: {
+    position: relative;
+    text-align: center;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      font-size: 0;
+      margin: 0;
+      height: 100%;
+      vertical-align: middle;
+      width: 0;
+    }
+  }
+
+  --vcenteree: {
+    display: inline-block;
+    max-width: 94%;
+    position: relative;
+    vertical-align: middle;
+  }
+
+  --ul-reset: {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  --li-reset: {
+    list-style: none;
+    margin-left: 0;
+  }
+
+  --ul-inline-wrapper: {
+    text-align: center;
+  }
+
+  --ul-inline: {
+    display: inline-block;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  --li-inline: {
+    float: left;
+    margin: .5em;
+    list-style: none;
+  }
+
+  --button-reset {
+    appearance: none;
+    background: none;
+    border: 0;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  --ratio-sixteen: {
+    height: 0;
+    padding-top: 56.25%;
+    position: relative;
+    width: 100%;
+  }
+
+  --ratio-ten: {
+    height: 0;
+    padding-top: 69%;
+    position: relative;
+    width: 100%;
+  }
+
+  --clearfix: {
+    &:after {
+      clear: both;
+      content: '';
+      display: block;
+      height: 0;
+      width: 100%;
+    }
+  }
+
+  --flex-vert: {
+    display: flex;
+    flex-direction: column;
+  }
+
+  --ui {
+    cursor: pointer;
+  }
+}
+
+.bg { @apply --bg; }
+.ui { @apply --ui; }
+.fill { @apply --fill; }
+.center { @apply --center; }
+.ratio_sixteen { @apply --ratio-sixteen; }
+.vcenterer { @apply --vcenterer; }
+.vcenteree { @apply --vcenteree; }
+.vcenterer_fill {
+  @apply --vcenterer;
+  @apply --fill;
+}
+.ul_reset { @apply --ul-reset; }
+.li_reset { @apply --li-reset; }
+.ul_inline { @apply --ul-inline; }
+.li_inline { @apply --li-inline; }
+.button_reset { @apply --button-reset; }
+.flex_vert { @apply --flex-vert; }

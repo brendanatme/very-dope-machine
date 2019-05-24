@@ -1,0 +1,9 @@
+
+.link {
+  cursor: pointer;
+  color: var(--blue);
+
+  &.selected {
+    color: var(--white);
+  }
+}

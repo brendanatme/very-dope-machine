@@ -1,0 +1,13 @@
+:root {
+  --white: #fff;
+  --blue: #46c;
+  --dblue: #202029;
+  --red: #c46;
+  --dred: #d35;
+  --purple: #a4b;
+  --green: #4b6;
+  --pink: #8b3da7;
+  --header-height: 100px;
+  --ease-out: cubic-bezier(0,.57,.43,.99);
+  --sidebar-width: 200px;
+}

@@ -1,0 +1,22 @@
+/* flex bugfix */
+* {
+  flex-shrink: 1;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+/* apply styles to elements outside of react app
+(including root div)
+this is to get a holy-grail flexbox layout */
+html,
+body,
+:global(.viewport) {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  width: 100%;
+}

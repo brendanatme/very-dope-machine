@@ -1,0 +1,8 @@
+@import "../core/variables";
+@import "../mixins/list";
+@import "../mixins/link";
+@import "../mixins/center_screen";
+
+.del {
+  color: var(--red);
+}

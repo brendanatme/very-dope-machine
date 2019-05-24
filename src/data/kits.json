@@ -1,0 +1,101 @@
+{
+  "all": {
+    "audiomatics": {
+      "name": "AUDIOMATICS",
+      "srcs": {
+        "A": "/audio/Audiomatics - Perc 1.mp3",
+        "B": "/audio/Audiomatics - Perc 2.mp3",
+        "C": "/audio/Audiomatics - Perc 3.mp3",
+        "D": "/audio/Audiomatics - Perc 4.mp3",
+
+        "E": "/audio/Audiomatics - Clap 1.mp3",
+        "F": "/audio/Audiomatics - Clap 2.mp3",
+        "G": "/audio/Audiomatics - Clap 3.mp3",
+        "H": "/audio/Audiomatics - Hihat 3.mp3",
+
+        "I": "/audio/Audiomatics - Snare 2.mp3",
+        "J": "/audio/Audiomatics - Snare 3.mp3",
+        "K": "/audio/Audiomatics - Hihat 1.mp3",
+        "L": "/audio/Audiomatics - Hihat 2.mp3",
+
+        "M": "/audio/Audiomatics - Kick 1.mp3",
+        "N": "/audio/Audiomatics - Kick 2.mp3",
+        "O": "/audio/Audiomatics - Kick 3.mp3",
+        "P": "/audio/Audiomatics - Snare 1.mp3"
+      }
+    },
+    "boomBapBaby": {
+      "name": "BOOM BAP BABY",
+      "srcs": {
+        "A": "/audio/Boom Bap Baby - Rare Horn Chop.mp3",
+        "B": "/audio/Boom Bap Baby - Dont Let Me Down.mp3",
+        "C": "/audio/Boom Bap Baby - OOOOHHHHH.mp3",
+        "D": "/audio/Boom Bap Baby - Rhodes.mp3",
+
+        "E": "/audio/Boom Bap Baby - Clap.mp3",
+        "F": "/audio/Boom Bap Baby - Ride.mp3",
+        "G": "/audio/Boom Bap Baby - Perc 1.mp3",
+        "H": "/audio/Boom Bap Baby - Perc 2.mp3",
+
+        "I": "/audio/Boom Bap Baby - Hi Hat 1.mp3",
+        "J": "/audio/Boom Bap Baby - Hi Hat 2.mp3",
+        "K": "/audio/Boom Bap Baby - Open Hi Hat.mp3",
+        "L": "/audio/Boom Bap Baby - Crash.mp3",
+
+        "M": "/audio/Boom Bap Baby - Kick 1.mp3",
+        "N": "/audio/Boom Bap Baby - Kick 2.mp3",
+        "O": "/audio/Boom Bap Baby - Snare 1.mp3",
+        "P": "/audio/Boom Bap Baby - Snare 2.mp3"
+      }
+    },
+    "dolfinRoom": {
+      "name": "DOLFIN ROOM",
+      "srcs": {
+        "A": "/audio/Dolfin Room - Tom High 7.mp3",
+        "B": "/audio/Dolfin Room - Tom Mid 8.mp3",
+        "C": "/audio/Dolfin Room - Tom Floor 6.mp3",
+        "D": "/audio/Dolfin Room - Snare Off 7.mp3",
+
+        "E": "/audio/Dolfin Room - Tom High Flam.mp3",
+        "F": "/audio/Dolfin Room - Tom Mid Flam.mp3",
+        "G": "/audio/Dolfin Room - Tom Floor Flam 2.mp3",
+        "H": "/audio/Dolfin Room - Snare Flam 2.mp3",
+
+        "I": "/audio/Dolfin Room - Hi Hat 4.mp3",
+        "J": "/audio/Dolfin Room - Hi Hat 5.mp3",
+        "K": "/audio/Dolfin Room - Hi Hat Open 1.mp3",
+        "L": "/audio/Dolfin Room - Crash C 1.mp3",
+
+        "M": "/audio/Dolfin Room - Kick 6.mp3",
+        "N": "/audio/Dolfin Room - Snare 1.mp3",
+        "O": "/audio/Dolfin Room - Snare 7.mp3",
+        "P": "/audio/Dolfin Room - Crash A 5.mp3"
+      }
+    },
+    "milkCrates": {
+      "name": "MILK CRATES",
+      "srcs": {
+        "A": "/audio/Milk Crates - Bass 85 1.mp3",
+        "B": "/audio/Milk Crates - Guitar 85 2.mp3",
+        "C": "/audio/Milk Crates - Guitar 90 15.mp3",
+        "D": "/audio/Milk Crates - Guitar 120 1.mp3",
+
+        "E": "/audio/Milk Crates - Guitar 120 3.mp3",
+        "F": "/audio/Milk Crates - Guitar 120 8.mp3",
+        "G": "/audio/Milk Crates - Guitar 120 18.mp3",
+        "H": "/audio/Milk Crates - Keys 90 2.mp3",
+
+        "I": "/audio/Milk Crates - Keys 90 3.mp3",
+        "J": "/audio/Milk Crates - Keys 90 4.mp3",
+        "K": "/audio/Milk Crates - Keys 90 5.mp3",
+        "L": "/audio/Milk Crates - Keys 90 6.mp3",
+
+        "M": "/audio/Milk Crates - Keys 90 7.mp3",
+        "N": "/audio/Milk Crates - Keys 100 4.mp3",
+        "O": "/audio/Milk Crates - Keys 110 6.mp3",
+        "P": "/audio/Milk Crates - Orch 100 3.mp3"
+      }
+    }
+  },
+  "selected": "audiomatics"
+}

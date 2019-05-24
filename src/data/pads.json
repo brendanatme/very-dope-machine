@@ -1,0 +1,146 @@
+{
+  "A": {
+    "id": "A",
+    "inputKey": "1",
+    "midiInput": 48,
+    "channelId": "A",
+    "volume": 0.7,
+    "startTime": 0,
+    "endTime": 12000
+  },
+  "B": {
+    "id": "B",
+    "inputKey": "2",
+    "midiInput": 49,
+    "channelId": "B",
+    "volume": 0.7,
+    "startTime": 0,
+    "endTime": 12000
+  },
+  "C": {
+    "id": "C",
+    "inputKey": "3",
+    "midiInput": 50,
+    "channelId": "C",
+    "volume": 0.7,
+    "startTime": 0,
+    "endTime": 12000
+  },
+  "D": {
+    "id": "D",
+    "inputKey": "4",
+    "midiInput": 51,
+    "channelId": "D",
+    "volume": 0.7,
+    "startTime": 0,
+    "endTime": 12000
+  },
+  "E": {
+    "id": "E",
+    "inputKey": "q",
+    "midiInput": 44,
+    "channelId": "E",
+    "volume": 0.7,
+    "startTime": 0,
+    "endTime": 12000
+  },
+  "F": {
+    "id": "F",
+    "inputKey": "w",
+    "midiInput": 45,
+    "channelId": "F",
+    "volume": 0.7,
+    "startTime": 0,
+    "endTime": 12000
+  },
+  "G": {
+    "id": "G",
+    "inputKey": "e",
+    "midiInput": 46,
+    "channelId": "G",
+    "volume": 0.2,
+    "startTime": 0,
+    "endTime": 12000
+  },
+  "H": {
+    "id": "H",
+    "inputKey": "r",
+    "midiInput": 47,
+    "channelId": "H",
+    "volume": 0.7,
+    "startTime": 0,
+    "endTime": 12000
+  },
+  "I": {
+    "id": "I",
+    "inputKey": "a",
+    "midiInput": 40,
+    "channelId": "I",
+    "volume": 0.7,
+    "startTime": 0,
+    "endTime": 12000
+  },
+  "J": {
+    "id": "J",
+    "inputKey": "s",
+    "midiInput": 41,
+    "channelId": "J",
+    "volume": 0.7,
+    "startTime": 0,
+    "endTime": 12000
+  },
+  "K": {
+    "id": "K",
+    "inputKey": "d",
+    "midiInput": 42,
+    "channelId": "K",
+    "volume": 0.7,
+    "startTime": 0,
+    "endTime": 12000
+  },
+  "L": {
+    "id": "L",
+    "inputKey": "f",
+    "midiInput": 43,
+    "channelId": "L",
+    "volume": 0.7,
+    "startTime": 0,
+    "endTime": 12000
+  },
+  "M": {
+    "id": "M",
+    "inputKey": "z",
+    "midiInput": 36,
+    "channelId": "M",
+    "volume": 0.7,
+    "startTime": 0,
+    "endTime": 12000
+  },
+  "N": {
+    "id": "N",
+    "inputKey": "x",
+    "midiInput": 37,
+    "channelId": "N",
+    "volume": 0.7,
+    "startTime": 0,
+    "endTime": 12000
+  },
+  "O": {
+    "id": "O",
+    "inputKey": "c",
+    "midiInput": 38,
+    "channelId": "O",
+    "volume": 0.7,
+    "startTime": 0,
+    "endTime": 12000
+  },
+  "P": {
+    "id": "P",
+    "inputKey": "v",
+    "midiInput": 39,
+    "channelId": "P",
+    "volume": 0.7,
+    "startTime": 0,
+    "endTime": 12000
+  }
+}

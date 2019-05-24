@@ -1,0 +1,15 @@
+@import "../core/utils";
+
+:root {
+  --button: {
+    @apply --button-reset;
+
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.button {
+  @apply --button;
+}

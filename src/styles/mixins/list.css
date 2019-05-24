@@ -1,0 +1,9 @@
+@import "../core/variables";
+
+.item {
+  cursor: pointer;
+}
+
+.item.selected {
+  color: var(--red);
+}
