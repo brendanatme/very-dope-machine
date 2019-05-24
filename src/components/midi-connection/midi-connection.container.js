@@ -10,8 +10,8 @@ const MIDI_INPUT = '[object MIDIInput]';
 class MidiConnection extends React.Component {
   static propTypes = {
     inputKey: PropTypes.number,
-    onKeyDown: PropTypes.function,
-    onKeyUp: PropTypes.function
+    onKeyDown: PropTypes.func,
+    onKeyUp: PropTypes.func,
   }
 
   constructor(props) {

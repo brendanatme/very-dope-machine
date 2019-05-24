@@ -19,7 +19,7 @@ class DrumPad extends React.Component {
     channelId: PropTypes.string,
     id: PropTypes.string,
     inputKey: PropTypes.string,
-    midiInput: PropTypes.string,
+    midiInput: PropTypes.number,
     openModal: PropTypes.func,
     playSound: PropTypes.func,
     src: PropTypes.string,
