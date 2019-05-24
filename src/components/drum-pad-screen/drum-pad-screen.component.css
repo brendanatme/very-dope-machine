@@ -45,3 +45,16 @@
   height: var(--drum-pad-screen-wh);
   width: var(--drum-pad-screen-wh);
 }
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+}
+
+@media (--mobile) {
+  .footer {
+    display: none;
+  }
+}

@@ -73,6 +73,6 @@ const mapStateToProps = ({ pads, kits, busses }) => {
     pads,
     sounds,
   };
-}
+};
 
 export default connect(mapStateToProps, { updatePad })(DrumPadForm);

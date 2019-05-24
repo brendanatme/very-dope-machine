@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import Loops from '../loops';
 import DrumPad from '../drum-pad';
 import Recorder from '../recorder';
+import BPMInput from '../bpm-input';
 import styles from './drum-pad-screen.component.css';
 
 const DrumPadScreen = ({ pads }) => (
@@ -39,7 +40,10 @@ const DrumPadScreen = ({ pads }) => (
         })}
       </div>
     </div>
-    <Recorder />
+    <div className={styles.footer}>
+      <BPMInput />
+      <Recorder />
+    </div>
   </div>
 );
 

@@ -6,18 +6,7 @@
 @import "../../styles/core/media";
 @import "../../styles/mixins/bounce";
 
-.footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 150px;
-}
-
-@media (--mobile) {
-  .footer {
-    display: none;
-  }
-}
+.recorder {}
 
 .record_btn {
   @apply --button-reset;

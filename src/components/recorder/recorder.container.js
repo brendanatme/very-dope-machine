@@ -73,14 +73,16 @@ class Recorder extends React.Component {
 
   render() {
     return (
-      <div className={styles.footer}>
+      <div className={styles.recorder}>
         <KeyHandler
           keyEventName={KEYUP}
           keyValue=" "
           onKeyHandle={this.toggleRecord}
         />
-        <button className={`${styles.record_btn} ${this.state.isRecording ? styles.is_recording : ''}`}
-          onClick={this.toggleRecord}>
+        <button
+          className={`${styles.record_btn} ${this.state.isRecording ? styles.is_recording : ''}`}
+          onClick={this.toggleRecord}
+        >
           {this.state.isRecording && (<RecCircle />)}
           <div className={styles.overlay} />
           <span className={styles.btn_text}>REC</span>
