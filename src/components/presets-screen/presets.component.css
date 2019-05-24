@@ -1,0 +1,11 @@
+/*
+  presets
+*/
+@import "../../styles/core/variables";
+@import "../../styles/mixins/list";
+@import "../../styles/mixins/link";
+@import "../../styles/mixins/center_screen";
+
+.del {
+  color: var(--red);
+}

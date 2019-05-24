@@ -1,0 +1,15 @@
+/*
+  loops
+*/
+@import "../../styles/core/variables";
+@import "../../styles/core/media";
+
+.loops {
+  width: var(--sidebar-width);
+}
+
+@media (--mobile) {
+  .loops {
+    display: none;
+  }
+}

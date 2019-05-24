@@ -1,0 +1,58 @@
+/*
+  recorder
+*/
+@import "../../styles/core/variables";
+@import "../../styles/core/utils";
+@import "../../styles/core/media";
+@import "../../styles/mixins/bounce";
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+}
+
+@media (--mobile) {
+  .footer {
+    display: none;
+  }
+}
+
+.record_btn {
+  @apply --button-reset;
+
+  color: var(--white);
+  cursor: pointer;
+  height: 80px;
+  margin: 10px;
+  position: relative;
+  width: 80px;
+}
+
+.record_btn {
+  border: 3px solid var(--dred);
+  border-radius: 40px;
+}
+
+.overlay {
+  @apply --fill;
+  background: var(--dred);
+  border-radius: 36px;
+  opacity: 0;
+  transition: opacity .25s var(--ease-out);
+  z-index: 1;
+}
+
+.record_btn:hover {
+  @apply --bounce;
+}
+
+.record_btn.is_recording .overlay {
+  opacity: 1;
+}
+
+.btn_text {
+  position: relative;
+  z-index: 2;
+}

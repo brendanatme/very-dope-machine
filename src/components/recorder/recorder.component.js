@@ -1,16 +1,16 @@
-/**
- * drum-pad.component
- */
+// /**
+//  * recorder.component
+//  */
 // import React from 'react';
-// import './drum-pad.component.css';
+// import './recorder.component.css';
 
 // export default ({
 //   // children,
 //   className = '',
 // }) => {
 //   return (
-//     <div className={`drum-pad ${className}`}>
-//       DrumPad
+//     <div className={`recorder ${className}`}>
+//       Recorder
 //     </div>
 //   );
 // };

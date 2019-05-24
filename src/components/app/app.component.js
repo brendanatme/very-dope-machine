@@ -7,8 +7,8 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { createPlayer } from '../../modules/player';
 import channelData from '../../data/channels.json';
 import transition from '../../styles/mixins/page.css';
-import Nav from '../Nav';
-import Modal from '../Modal';
+import Nav from '../nav';
+import Modal from '../modal';
 import styles from './app.component.css';
 
 const App = props => {

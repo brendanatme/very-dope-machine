@@ -1,16 +1,16 @@
-/**
- * drum-pad.component
- */
+// /**
+//  * nav.component
+//  */
 // import React from 'react';
-// import './drum-pad.component.css';
+// import './nav.component.css';
 
 // export default ({
 //   // children,
 //   className = '',
 // }) => {
 //   return (
-//     <div className={`drum-pad ${className}`}>
-//       DrumPad
+//     <div className={`nav ${className}`}>
+//       Nav
 //     </div>
 //   );
 // };

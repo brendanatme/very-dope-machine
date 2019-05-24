@@ -1,8 +1,0 @@
-@import "../core/variables";
-
-.save_btn {
-  bottom: 20px;
-  color: var(--blue);
-  position: absolute;
-  right: 30px;
-}

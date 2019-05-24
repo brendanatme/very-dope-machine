@@ -4,26 +4,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import KeyHandler, { KEYDOWN, KEYUP } from 'react-key-handler';
-import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { hasTouch } from '../../helpers';
 import { connectToPlayer } from '../../modules/player';
 import { openModal } from '../../actions/modalActions';
-import MidiConnection from '../MidiConnection';
-import PadCircle from '../PadCircle';
+import MidiConnection from '../midi-connection';
+import PadCircle from '../pad-circle';
 import styles from './drum-pad.component.css';
 // TODO: split component from container
 // import DrumPadComponent from './drum-pad.component';
 
 class DrumPad extends React.Component {
   static propTypes = {
-    id: PropTypes.string,
-    src: PropTypes.string,
-    inputKey: PropTypes.string,
     channelId: PropTypes.string,
-    volume: PropTypes.number,
+    id: PropTypes.string,
+    inputKey: PropTypes.string,
+    midiInput: PropTypes.string,
     openModal: PropTypes.func,
-    playSound: PropTypes.func
+    playSound: PropTypes.func,
+    src: PropTypes.string,
+    volume: PropTypes.number,
   }
 
   state = {
@@ -87,12 +87,9 @@ class DrumPad extends React.Component {
   }
 
   render() {
-    const cssState = classNames({
-      [styles.drum_pad]: true,
-      [styles.is_pressed]: this.state.isPressed,
-      [styles.is_editing]: this.state.isEditing,
-      [styles.has_touch]: hasTouch(),
-    });
+    const isPressed = this.state.isPressed ? styles.is_pressed : '';
+    const isEditing = this.state.isEditing ? styles.is_editing : '';
+    const isTouch = hasTouch() ? styles.has_touch : '';
 
     // need reference to circle
     // to imperatively call animations
@@ -100,14 +97,14 @@ class DrumPad extends React.Component {
     return (
       <div
         onClick={this.handleClick}
-        className={cssState}>
+        className={`${styles.drum_pad} ${isPressed} ${isEditing} ${isTouch}`}>
         {this.bindKeys()}
         <MidiConnection
           inputKey={this.props.midiInput}
           onKeyDown={this.handleKeyDown}
           onKeyUp={this.handleKeyUp}
         />
-        <PadCircle ref={circle => {this.anim = circle;}} />
+        <PadCircle ref={circle => { this.anim = circle; }} />
         <div className={styles.pad_key}>{this.props.inputKey}</div>
       </div>
     );

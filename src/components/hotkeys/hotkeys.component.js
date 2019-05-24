@@ -8,7 +8,7 @@ import React from 'react';
 // TODO break these out into abstract list styles
 import styles from './hotkeys.component.css';
 
-export default () => (
+const Hotkeys = () => (
   <div className={styles.hotkeys}>
     <h4>HOTKEYS</h4>
     <div className={styles.grid}>
@@ -42,3 +42,5 @@ export default () => (
     </ul>
   </div>
 );
+
+export default Hotkeys;

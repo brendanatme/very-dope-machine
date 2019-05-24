@@ -1,0 +1,12 @@
+/*
+  loop
+*/
+@import "../../styles/core/variables";
+
+.loop {
+  height: 80px;
+  margin-bottom: 40px;
+  margin-top: 10px;
+  text-align: center;
+  width: var(--sidebar-width);
+}

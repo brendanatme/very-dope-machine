@@ -1,16 +1,16 @@
-/**
- * drum-pad.component
- */
+// /**
+//  * loops.component
+//  */
 // import React from 'react';
-// import './drum-pad.component.css';
+// import './loops.component.css';
 
 // export default ({
 //   // children,
 //   className = '',
 // }) => {
 //   return (
-//     <div className={`drum-pad ${className}`}>
-//       DrumPad
+//     <div className={`loops ${className}`}>
+//       Loops
 //     </div>
 //   );
 // };

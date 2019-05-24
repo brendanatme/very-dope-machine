@@ -11,9 +11,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Loops from '../Loops';
+import Loops from '../loops';
 import DrumPad from '../drum-pad';
-import Recorder from '../Recorder';
+import Recorder from '../recorder';
 import styles from './drum-pad-screen.component.css';
 
 const DrumPadScreen = ({ pads }) => (

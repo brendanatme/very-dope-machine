@@ -1,0 +1,35 @@
+/*
+  nav
+*/
+@import "../../styles/core/variables";
+@import "../../styles/core/media";
+@import "../../styles/core/utils";
+
+.nav {
+  align-items: center;
+  display: flex;
+  height: var(--header-height);
+  justify-content: center;
+  position: relative;
+}
+
+.item {
+  flex: 1;
+  text-align: center;
+}
+
+.link {
+  color: var(--blue);
+  flex: 1;
+  text-align: center;
+}
+
+@media (--mobile) {
+  .link {
+    font-size: 12px;
+  }
+
+  .hotkey {
+    display: none;
+  }
+}
