@@ -9,6 +9,8 @@
 // by the connectToRecorder method
 // has access to the startRecording() and stopRecording() methods
 //
+// TODO: tie into BPMs to trim recording according to bars
+//
 export default class Recorder {
   isSetup = false
 
@@ -50,7 +52,7 @@ export default class Recorder {
       this.player.addLoopChannel(id, recordedUrl);
       this.addLoop({
         id,
-        name: `Loop ${this.loopCount}`
+        name: `Loop ${this.loopCount}`,
       });
 
       if (typeof onStop === 'function') {

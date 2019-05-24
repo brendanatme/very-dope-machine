@@ -6,9 +6,9 @@
 // to communicate with channels based on the channel ID,
 // or to communicate with the recorder
 //
-import Channel from './Channel';
+import Channel from './channel';
 import HTML5Channel from './html5-channel';
-import Recorder from './Recorder';
+import Recorder from './recorder';
 
 export default class Player {
   channels = {}
