@@ -1,9 +1,9 @@
 //
 // Recorder
 //
-// get stream output from channels (using howler library)
+// get stream output from busses (using howler library)
 // record into blob
-// give to loop channel for playback
+// give to loop bus for playback
 //
 // any component connected
 // by the connectToRecorder method
@@ -45,11 +45,11 @@ export default class Recorder {
       this.chunks = [];
 
       // we've finished a recording
-      // now let's create a channel for it
+      // now let's create a bus for it
       // and a loop
-      // and link it to the channel
+      // and link it to the bus
       const id = `L${++this.loopCount}`;
-      this.player.addLoopChannel(id, recordedUrl);
+      this.player.addLoopBus(id, recordedUrl);
       this.addLoop({
         id,
         name: `Loop ${this.loopCount}`,
@@ -63,6 +63,10 @@ export default class Recorder {
     this.isSetup = true;
   }
 
+  /**
+   * @todo when the recorder starts, play a click track according to BPM
+   * @param {function?} onStop
+   */
   startRecording(onStop) {
     if (!this.isSetup) {
       this.setupConnections(onStop);

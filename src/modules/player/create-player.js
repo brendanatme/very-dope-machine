@@ -5,14 +5,14 @@
 // which will then give access to audio player object
 // to children, via context
 //
-// usage: createPlayer(channelIds)(MyComponent);
+// usage: createPlayer(busIds)(MyComponent);
 //
 import React from 'react';
 import PropTypes from 'prop-types';
 import Player from './player';
 
-export const createPlayerFactory = (channelIds) => {
-  const player = new Player(channelIds);
+export const createPlayerFactory = (busIds) => {
+  const player = new Player(busIds);
   return (Composed) => {
     return class PlayerConnection extends React.Component {
       static childContextTypes = {

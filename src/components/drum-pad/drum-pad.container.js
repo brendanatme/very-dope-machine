@@ -16,7 +16,7 @@ import styles from './drum-pad.component.css';
 
 class DrumPad extends React.Component {
   static propTypes = {
-    channelId: PropTypes.string,
+    busId: PropTypes.string,
     id: PropTypes.string,
     inputKey: PropTypes.string,
     midiInput: PropTypes.number,
@@ -111,6 +111,6 @@ class DrumPad extends React.Component {
   }
 }
 
-const ChannelDrumPad = connectToPlayer()(DrumPad);
+const BusDrumPad = connectToPlayer()(DrumPad);
 
-export default connect(null, { openModal })(ChannelDrumPad);
+export default connect(null, { openModal })(BusDrumPad);

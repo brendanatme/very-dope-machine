@@ -3,7 +3,7 @@ import Immutable from 'immutable';
 import { NAMESPACE } from '../constants';
 import { PAD_DUMP } from './pads.state';
 import { KIT_DUMP } from './kits.state';
-import { CHANNEL_DUMP } from './channels.state';
+import { BUS_DUMP } from './busses.state';
 
 // data
 const presetData = {
@@ -42,7 +42,7 @@ export const loadPreset = (i) => {
   const {
     kits,
     pads,
-    channels
+    busses,
   } = Lockr.get(`${NAMESPACE}_${i}`);
 
   return dispatch => {
@@ -57,8 +57,8 @@ export const loadPreset = (i) => {
     });
 
     dispatch({
-      type: CHANNEL_DUMP,
-      payload: channels,
+      type: BUS_DUMP,
+      payload: busses,
     });
 
     dispatch(loadPresetAction(i));

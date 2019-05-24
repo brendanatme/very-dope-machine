@@ -29,7 +29,7 @@ const DrumPadScreen = ({ pads }) => (
               id={k}
               src={pad.src}
               inputKey={pad.inputKey}
-              channelId={pad.channelId}
+              busId={pad.busId}
               volume={pad.volume}
               startTime={pad.startTime}
               endTime={pad.endTime}

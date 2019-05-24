@@ -12,7 +12,7 @@ import DrumPadFormComponent from './drum-pad-form.component';
 
 class DrumPadForm extends React.Component {
   static propTypes = {
-    channels: PropTypes.array,
+    busses: PropTypes.array,
     id: PropTypes.string,
     pads: PropTypes.object,
     sounds: PropTypes.array,
@@ -49,7 +49,7 @@ class DrumPadForm extends React.Component {
   render() {
     return (
       <DrumPadFormComponent
-        channels={this.props.channels}
+        busses={this.props.busses}
         id={this.props.id}
         makeHandleInputChange={this.makeHandleInputChange}
         pad={this.props.pads[this.props.id]}
@@ -59,7 +59,7 @@ class DrumPadForm extends React.Component {
   }
 }
 
-const mapStateToProps = ({ pads, kits, channels }) => {
+const mapStateToProps = ({ pads, kits, busses }) => {
   let sounds = [];
 
   Object.keys(kits.all).map(k => {
@@ -69,7 +69,7 @@ const mapStateToProps = ({ pads, kits, channels }) => {
   });
 
   return {
-    channels: Object.keys(channels),
+    busses: Object.keys(busses),
     pads,
     sounds,
   };

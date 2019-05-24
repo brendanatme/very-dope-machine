@@ -1,5 +1,5 @@
 //
-// Channel
+// Bus
 //
 // controls the playback of multiple sounds
 // only plays one sound at a time
@@ -10,7 +10,7 @@
 //
 import { Howl } from 'howler';
 
-export default class Channel {
+export default class Bus {
   // sounds hash
   // key: Src {String}
   // val: Sound {Object}
@@ -19,7 +19,7 @@ export default class Channel {
   // currentSound: Src {String}
   currentSound = ''
 
-  // add a sound to channel
+  // add a sound to a bus
   // load it in howl instance
   // @param howlSettings {Object}
   add({ id, src, volume, startTime, endTime }) {
@@ -29,7 +29,7 @@ export default class Channel {
     }});
   }
 
-  // remove a sound from channel
+  // remove a sound from a bus
   // @param howlSettings {Object}
   remove({ id }) {
     if (!id) { return; }
@@ -56,7 +56,7 @@ export default class Channel {
   // play a sound
   // @param howlSettings {Object}
   play({ id }) {
-    // Channel accepts input from DrumPad
+    // Bus accepts input from DrumPad
     // not all pads have sounds
     if (!id) { return; }
     if (this.currentSound) {

@@ -1,5 +1,5 @@
 import Immutable from 'immutable';
-import channelsData from '../data/channels.json';
+import bussesData from '../data/busses.json';
 
 // action types
 export const ADD_SOUND = 'add_sound';
@@ -7,7 +7,7 @@ export const PLAY_SOUND = 'play_sound';
 export const STOP_SOUND = 'stop_sound';
 export const UPDATE_SOUND = 'update_sound';
 export const REMOVE_SOUND = 'remove_sound';
-export const CHANNEL_DUMP = 'channel_dump';
+export const BUS_DUMP = 'bus_dump';
 
 // actions
 // NOTE: none of these are being used. Why are they here
@@ -37,28 +37,28 @@ export const stopCurrentSound = (id) => ({
 });
 
 // reducer
-export const reducer = function(state = channelsData, { type, payload }) {
+export const reducer = function(state = bussesData, { type, payload }) {
   state = Immutable.fromJS(state);
   switch (type) {
     case REMOVE_SOUND:
       return state.deleteIn([
-        payload.channelId,
+        payload.busId,
         'inputs'
       ], payload.id).toJS();
     case ADD_SOUND:
       return state.setIn([
-        payload.channelId,
+        payload.busId,
         'inputs',
         payload.id
       ], payload).toJS();
     case PLAY_SOUND:
       return state.updateIn([
-        payload.channelId,
+        payload.busId,
         'play'
       ], () => payload.id).toJS();
     case UPDATE_SOUND:
       return state.updateIn([
-        payload.channelId,
+        payload.busId,
         'inputs',
         payload.id
       ], () => payload).toJS();
@@ -67,7 +67,7 @@ export const reducer = function(state = channelsData, { type, payload }) {
         payload,
         'play'
       ], () => '').toJS();
-    case CHANNEL_DUMP:
+    case BUS_DUMP:
       return payload;
     default:
       return state.toJS();

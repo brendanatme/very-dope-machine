@@ -12,10 +12,10 @@ import styles from './loop.component.css';
 
 class Loop extends React.Component {
   static propTypes = {
-    removeLoop: PropTypes.func,
-    channel: PropTypes.object,
+    bus: PropTypes.object,
+    id: PropTypes.string,
     name: PropTypes.string,
-    id: PropTypes.string
+    removeLoop: PropTypes.func,
   }
 
   state = {
@@ -26,8 +26,8 @@ class Loop extends React.Component {
     e.preventDefault();
 
     this.state.isPlaying
-      ? this.props.channel.stop()
-      : this.props.channel.play();
+      ? this.props.bus.stop()
+      : this.props.bus.play();
 
     this.setState({
       isPlaying: !this.state.isPlaying,
@@ -37,7 +37,7 @@ class Loop extends React.Component {
   handleClose = (e) => {
     e.preventDefault();
 
-    this.props.channel.destroy();
+    this.props.bus.destroy();
     this.props.removeLoop(this.props.id);
   }
 

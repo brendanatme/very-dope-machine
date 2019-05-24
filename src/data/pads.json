@@ -3,7 +3,7 @@
     "id": "A",
     "inputKey": "1",
     "midiInput": 48,
-    "channelId": "A",
+    "busId": "A",
     "volume": 0.7,
     "startTime": 0,
     "endTime": 12000
@@ -12,7 +12,7 @@
     "id": "B",
     "inputKey": "2",
     "midiInput": 49,
-    "channelId": "B",
+    "busId": "B",
     "volume": 0.7,
     "startTime": 0,
     "endTime": 12000
@@ -21,7 +21,7 @@
     "id": "C",
     "inputKey": "3",
     "midiInput": 50,
-    "channelId": "C",
+    "busId": "C",
     "volume": 0.7,
     "startTime": 0,
     "endTime": 12000
@@ -30,7 +30,7 @@
     "id": "D",
     "inputKey": "4",
     "midiInput": 51,
-    "channelId": "D",
+    "busId": "D",
     "volume": 0.7,
     "startTime": 0,
     "endTime": 12000
@@ -39,7 +39,7 @@
     "id": "E",
     "inputKey": "q",
     "midiInput": 44,
-    "channelId": "E",
+    "busId": "E",
     "volume": 0.7,
     "startTime": 0,
     "endTime": 12000
@@ -48,7 +48,7 @@
     "id": "F",
     "inputKey": "w",
     "midiInput": 45,
-    "channelId": "F",
+    "busId": "F",
     "volume": 0.7,
     "startTime": 0,
     "endTime": 12000
@@ -57,7 +57,7 @@
     "id": "G",
     "inputKey": "e",
     "midiInput": 46,
-    "channelId": "G",
+    "busId": "G",
     "volume": 0.2,
     "startTime": 0,
     "endTime": 12000
@@ -66,7 +66,7 @@
     "id": "H",
     "inputKey": "r",
     "midiInput": 47,
-    "channelId": "H",
+    "busId": "H",
     "volume": 0.7,
     "startTime": 0,
     "endTime": 12000
@@ -75,7 +75,7 @@
     "id": "I",
     "inputKey": "a",
     "midiInput": 40,
-    "channelId": "I",
+    "busId": "I",
     "volume": 0.7,
     "startTime": 0,
     "endTime": 12000
@@ -84,7 +84,7 @@
     "id": "J",
     "inputKey": "s",
     "midiInput": 41,
-    "channelId": "J",
+    "busId": "J",
     "volume": 0.7,
     "startTime": 0,
     "endTime": 12000
@@ -93,7 +93,7 @@
     "id": "K",
     "inputKey": "d",
     "midiInput": 42,
-    "channelId": "K",
+    "busId": "K",
     "volume": 0.7,
     "startTime": 0,
     "endTime": 12000
@@ -102,7 +102,7 @@
     "id": "L",
     "inputKey": "f",
     "midiInput": 43,
-    "channelId": "L",
+    "busId": "L",
     "volume": 0.7,
     "startTime": 0,
     "endTime": 12000
@@ -111,7 +111,7 @@
     "id": "M",
     "inputKey": "z",
     "midiInput": 36,
-    "channelId": "M",
+    "busId": "M",
     "volume": 0.7,
     "startTime": 0,
     "endTime": 12000
@@ -120,7 +120,7 @@
     "id": "N",
     "inputKey": "x",
     "midiInput": 37,
-    "channelId": "N",
+    "busId": "N",
     "volume": 0.7,
     "startTime": 0,
     "endTime": 12000
@@ -129,7 +129,7 @@
     "id": "O",
     "inputKey": "c",
     "midiInput": 38,
-    "channelId": "O",
+    "busId": "O",
     "volume": 0.7,
     "startTime": 0,
     "endTime": 12000
@@ -138,7 +138,7 @@
     "id": "P",
     "inputKey": "v",
     "midiInput": 39,
-    "channelId": "P",
+    "busId": "P",
     "volume": 0.7,
     "startTime": 0,
     "endTime": 12000

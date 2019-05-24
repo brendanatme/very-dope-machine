@@ -20,7 +20,7 @@ export const connectToLoop = (Composed) => {
     render() {
       return (
         <Composed
-          channel={this.player.loopChannels[this.props.id]}
+          bus={this.player.loopBusses[this.props.id]}
           {...this.props}
         />
       );

@@ -5,7 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { createPlayer } from '../../modules/player';
-import channelData from '../../data/channels.json';
+import bussesData from '../../data/busses.json';
 import transition from '../../styles/mixins/page.css';
 import Nav from '../nav';
 import Modal from '../modal';
@@ -31,4 +31,4 @@ App.propTypes = {
   location: PropTypes.object,
 };
 
-export default createPlayer(channelData)(App);
+export default createPlayer(bussesData)(App);

@@ -1,54 +1,54 @@
 //
 // Player
 //
-// thin wrapper around channel objects and record object
+// thin wrapper around bus objects and record object
 // provides interface for all connected components
-// to communicate with channels based on the channel ID,
+// to communicate with busses based on the bus ID,
 // or to communicate with the recorder
 //
-import Channel from './channel';
-import HTML5Channel from './html5-channel';
+import Bus from './bus';
+import HTML5Bus from './html5-bus';
 import Recorder from './recorder';
 
 export default class Player {
-  channels = {}
-  loopChannels = {}
+  busses = {}
+  loopBusses = {}
   recorder = {}
 
-  constructor(channels) {
-    Object.keys(channels).map(k => {
-      this.channels[k] = new Channel();
+  constructor(busses) {
+    Object.keys(busses).map(k => {
+      this.busses[k] = new Bus();
     });
     this.recorder = new Recorder(this);
   }
 
-  addLoopChannel(id, src) {
-    this.loopChannels[id] = new HTML5Channel(this, id, src);
+  addLoopBus(id, src) {
+    this.loopBusses[id] = new HTML5Bus(this, id, src);
   }
 
-  removeLoopChannel(id) {
-    delete this.loopChannels[id];
+  removeLoopBus(id) {
+    delete this.loopBusses[id];
   }
 
-  add(soundProps, channelId) {
-    this.channels[channelId].add(soundProps);
+  add(soundProps, busId) {
+    this.busses[busId].add(soundProps);
   }
 
-  remove(soundProps, channelId) {
-    this.channels[channelId].remove(soundProps);
+  remove(soundProps, busId) {
+    this.busses[busId].remove(soundProps);
   }
 
-  update(soundProps, channelId) {
-    this.channels[channelId].update(soundProps);
+  update(soundProps, busId) {
+    this.busses[busId].update(soundProps);
   }
 
-  play(soundProps, channelId) {
-    this.channels[channelId].play(soundProps);
+  play(soundProps, busId) {
+    this.busses[busId].play(soundProps);
   }
 
   stopAll() {
-    Object.keys(this.channels).map(k => {
-      this.channels[k].stop();
+    Object.keys(this.busses).map(k => {
+      this.busses[k].stop();
     });
   }
 }

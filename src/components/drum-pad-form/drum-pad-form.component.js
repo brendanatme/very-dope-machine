@@ -7,7 +7,7 @@ import { parseFilename } from '../../helpers';
 import styles from './drum-pad-form.component.css';
 
 const DrumPadForm = ({
-  channels,
+  busses,
   id,
   makeHandleInputChange,
   pad,
@@ -16,12 +16,12 @@ const DrumPadForm = ({
   <form className={styles.drum_pad_form}>
     <h3>EDIT PAD {id}</h3>
     <fieldset className={styles.fieldset}>
-      <label className={styles.label}>CHANNEL</label>
+      <label className={styles.label}>BUS</label>
       <select
         className={styles.select}
-        defaultValue={pad.channelId}
-        onChange={makeHandleInputChange('channelId', 'select')}>
-        {channels.map(k => (
+        defaultValue={pad.busId}
+        onChange={makeHandleInputChange('busId', 'select')}>
+        {busses.map(k => (
           <option key={k}>{k}</option>
         ))}
       </select>
@@ -80,7 +80,7 @@ const DrumPadForm = ({
 );
 
 DrumPadForm.propTypes = {
-  channels: PropTypes.array,
+  busses: PropTypes.array,
   id: PropTypes.string,
   makeHandleInputChange: PropTypes.func,
   pad: PropTypes.object,

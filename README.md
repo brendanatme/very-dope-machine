@@ -14,14 +14,13 @@ Very. Dope. Machine.
         x (destroy)
         v (down arrow, download)
       Audio
-        HTML5Channel
+        HTML5Bus
 
     break out play btn
     remove from recorder 
     build out loop component
     include play button
 
-1. output all channels, including HTML5Channels to recorder
 1. Upgrade React version and possibly migrate boilerplate
 
 ## Boilerplate: React slingshot

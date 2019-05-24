@@ -8,12 +8,12 @@
 // then a component
 //
 // connectToPlayer takes up to six properties:
-// - id, src, channelId, volume, startTime, endTime
+// - id, src, busId, volume, startTime, endTime
 //
 // example:
 // connectToPlayer({
 //  src: 'mySrcProp',
-//  channelId: 'someOtherProp',
+//  busId: 'someOtherProp',
 //  volume: 'aVolumeProperty'
 // })(MyComponent);
 //
@@ -26,7 +26,7 @@ import PropTypes from 'prop-types';
 export const connectToPlayerFactory = (propsMap = {
   id: 'id',
   src: 'src',
-  channelId: 'channelId',
+  busId: 'busId',
   volume: 'volume',
   startTime: 'startTime',
   endTime: 'endTime'
@@ -46,7 +46,7 @@ export const connectToPlayerFactory = (propsMap = {
       return {
         id: props[propsMap.id],
         src: props[propsMap.src],
-        channelId: props[propsMap.channelId],
+        busId: props[propsMap.busId],
         volume: props[propsMap.volume],
         startTime: props[propsMap.startTime],
         endTime: props[propsMap.endTime]
@@ -56,16 +56,16 @@ export const connectToPlayerFactory = (propsMap = {
     componentDidMount() {
       const props = this.getNormalizedProps(this.props);
 
-      if (props.src && props.channelId) {
-        this.player.add(props, props.channelId);
+      if (props.src && props.busId) {
+        this.player.add(props, props.busId);
       }
     }
 
     componentWillUnmount() {
       const props = this.getNormalizedProps(this.props);
 
-      if (props.src && props.channelId) {
-        this.player.remove(props, props.channelId);
+      if (props.src && props.busId) {
+        this.player.remove(props, props.busId);
       }
     }
 
@@ -74,24 +74,24 @@ export const connectToPlayerFactory = (propsMap = {
       nextProps = this.getNormalizedProps(nextProps);
 
       // component will receive props
-      // if channel has changed
-      // - remove sounds from old channel
-      // - add sound to new channel
-      if (nextProps.channelId !== props.channelId) {
-        this.player.remove(props, props.channelId);
-        this.player.add(nextProps, nextProps.channelId);
+      // if bus has changed
+      // - remove sounds from old bus
+      // - add sound to new bus
+      if (nextProps.busId !== props.busId) {
+        this.player.remove(props, props.busId);
+        this.player.add(nextProps, nextProps.busId);
 
         // else if sound has changed
-        // - remove old sound from channel
-        // - add new sound to channel
+        // - remove old sound from bus
+        // - add new sound to bus
       } else if (nextProps.src !== props.src) {
-          this.player.remove(props, props.channelId);
-          this.player.add(nextProps, nextProps.channelId);
+          this.player.remove(props, props.busId);
+          this.player.add(nextProps, nextProps.busId);
 
         // else if other settings have changed
         // - update sound
       } else if (nextProps !== props) {
-        this.player.update(nextProps, nextProps.channelId);
+        this.player.update(nextProps, nextProps.busId);
       }
     }
 
@@ -100,7 +100,7 @@ export const connectToPlayerFactory = (propsMap = {
         <Composed
           playSound={() => { this.player.play(
             { id: this.props[propsMap.id] },
-            this.props[propsMap.channelId]
+            this.props[propsMap.busId]
           ); }}
           {...this.props}
         />
