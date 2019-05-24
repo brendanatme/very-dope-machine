@@ -1,0 +1,59 @@
+/*
+  drum-pad
+*/
+@import "../../styles/core/variables";
+@import "../../styles/core/utils";
+
+:root {
+  --drum-pad-wh: 23%;
+}
+
+.drum_pad {
+  border: 2px solid var(--white);
+  border-radius: 15px;
+  cursor: pointer;
+  float: left;
+  height: var(--drum-pad-wh);
+  margin: 1%;
+  overflow: hidden;
+  position: relative;
+  transition: border-color .4s var(--ease-out);
+  width: var(--drum-pad-wh);
+}
+
+.drum_pad.is_pressed {
+  border-color: var(--red);
+  transition: border-color .1s var(--ease-out);
+}
+
+.anim {
+  @apply --fill;
+  background-color: var(--red);
+  clip-path: circle(0px at center);
+  transition: color .4s var(--ease-out), clip-path .4s var(--ease-out);
+}
+
+.is_pressed .anim {
+  background-color: var(--purple);
+  clip-path: circle(120px at center);
+  transition: color .4s var(--ease-out), clip-path .1s var(--ease-out);
+}
+
+.drum_pad:hover,
+.drum_pad.is_editing {
+  border-color: var(--pink);
+  transition: border-color .1s var(--ease-out);
+}
+
+.drum_pad.has_touch:hover {
+  border-color: var(--white);
+}
+
+.pad_key {
+  @apply --fill;
+
+  font-size: 2em;
+  line-height: 3;
+  opacity: .1;
+  text-align: center;
+}

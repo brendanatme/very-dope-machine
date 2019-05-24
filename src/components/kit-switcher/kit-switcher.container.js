@@ -12,29 +12,20 @@
 // @resource pads
 // @resource kits
 //
-import _ from 'lodash';
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import KeyHandler, { KEYDOWN } from 'react-key-handler';
-import classNames from 'classnames';
-import { switchKit } from '../actions/kitActions';
-import styles from '../styles/components/kit_switcher.css';
+import { switchKit } from '../../actions/kitActions';
+import KitSwitcherComponent from './kit-switcher.component';
 
-class KitSwitcher extends Component {
+class KitSwitcher extends React.Component {
   static propTypes = {
     kits: PropTypes.object,
     pads: PropTypes.object,
     switchKit: PropTypes.func
   }
 
-  constructor(props) {
-    super(props);
-
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.selectKit = this.selectKit.bind(this);
-  }
-
-  handleKeyDown({ key }) {
+  handleKeyDown = ({ key }) => {
     switch (key) {
       case "ArrowUp":
         return this.selectPreviousKit();
@@ -61,47 +52,22 @@ class KitSwitcher extends Component {
     this.selectKit(key);
   }
 
-  selectKit(key) {
+  selectKit = (key) => {
     this.props.switchKit(key);
   }
 
-  renderList() {
-    let items = [];
-
-    _.forIn(this.props.kits.all, (kit, key) => {
-      items.push(
-        <li key={key}
-          className={classNames({
-            [styles.item]: true,
-            [styles.selected]: this.props.kits.selected === key
-          })}
-          onClick={() => this.selectKit(key)}>
-          {kit.name}
-        </li>
-      );
-    });
-
-    return <ul className={styles.ul_reset}>{items}</ul>;
+  makeSelectKit = (key) => () => {
+    this.selectKit(key);
   }
 
   render() {
-    return(
-      <div className={styles.center_screen}>
-        <div>
-          <h4>DRUM KITS</h4>
-          {this.renderList()}
-          <KeyHandler
-            keyEventName={KEYDOWN}
-            keyValue="ArrowUp"
-            onKeyHandle={this.handleKeyDown}
-          />
-          <KeyHandler
-            keyEventName={KEYDOWN}
-            keyValue="ArrowDown"
-            onKeyHandle={this.handleKeyDown}
-          />
-        </div>
-      </div>
+    return (
+      <KitSwitcherComponent
+        allKits={this.props.kits.all}
+        handleKeyDown={this.handleKeyDown}
+        makeSelectKit={this.makeSelectKit}
+        selectedKitKey={this.props.kits.selected}
+      />
     );
   }
 }

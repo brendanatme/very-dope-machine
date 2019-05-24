@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const MIDI_INPUT = '[object MIDIInput]';
 
@@ -18,7 +19,7 @@ const arrayFromIterator = iterator => {
   return arr;
 };
 
-class MidiConnection extends Component {
+class MidiConnection extends React.Component {
   static propTypes = {
     inputKey: PropTypes.number,
     onKeyDown: PropTypes.function,
@@ -73,9 +74,9 @@ class MidiConnection extends Component {
       return;
     }
 
-    isConnected ?
-      this.connectInstruments():
-      this.disconnectInstruments();
+    isConnected
+      ? this.connectInstruments()
+      : this.disconnectInstruments();
   }
 
   handleMidiMessage(message) {

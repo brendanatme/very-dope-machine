@@ -12,7 +12,8 @@
 // - this.props.recorder.play()
 // - this.props.recorder.pause()
 //
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import KeyHandler, { KEYUP } from 'react-key-handler';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
@@ -21,16 +22,11 @@ import { addLoop, removeLoop } from '../actions/loopActions';
 import RecCircle from './RecCircle';
 import styles from '../styles/components/recorder.css';
 
-class Recorder extends Component {
+class Recorder extends React.Component {
   static propTypes = {
     recorder: PropTypes.object,
     addLoop: PropTypes.func,
     removeLoop: PropTypes.func
-  }
-
-  constructor(props) {
-    super(props);
-    this.toggleRecord = this.toggleRecord.bind(this);
   }
 
   state = {
@@ -63,7 +59,7 @@ class Recorder extends Component {
   // when spacebar is pressed:
   // if recording, stop
   // else start recording
-  toggleRecord(e) {
+  toggleRecord = (e) => {
     e.preventDefault();
 
     if (this.state.isRecording) {

@@ -1,20 +1,13 @@
-import React, { PropTypes } from 'react';
-import classNames from 'classnames';
+import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../styles/components/play_button.css';
 
-const PlayButton = ({ isPlaying, handleClick }) => {
-  const playBtnStyles = classNames({
-    [styles.play_btn]: true,
-    [styles.is_playing]: isPlaying
-  });
-
-  return (
-    <button
-      className={playBtnStyles}
-      onClick={handleClick}
-    />
-  );
-};
+const PlayButton = ({ isPlaying, handleClick }) => (
+  <button
+    className={`${styles.play_btn} ${isPlaying ? styles.is_playing : ''}`}
+    onClick={handleClick}
+  />
+);
 
 PlayButton.propTypes = {
   handleClick: PropTypes.func,

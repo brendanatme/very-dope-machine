@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import App from './components/App';
-import DrumPadScreen from './components/DrumPadScreen';
-import KitSwitcher from './components/KitSwitcher';
+import App from './components/app';
+import DrumPadScreen from './components/drum-pad-screen';
+import KitSwitcher from './components/kit-switcher';
 import Presets from './components/Presets';
 
 export default (

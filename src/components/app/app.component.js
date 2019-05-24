@@ -1,12 +1,15 @@
-import React, { cloneElement } from 'react';
+/**
+ * app.component
+ */
+import React from 'react';
+import PropTypes from 'prop-types';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import Nav from './Nav';
-import Modal from './Modal';
-import { createPlayer } from '../modules/player';
-import channelData from '../data/channels.json';
-import styles from '../styles/components/app.css';
-import transition from '../styles/mixins/page.css';
-
+import { createPlayer } from '../../modules/player';
+import channelData from '../../data/channels.json';
+import transition from '../../styles/mixins/page.css';
+import Nav from '../Nav';
+import Modal from '../Modal';
+import styles from './app.component.css';
 
 const App = props => {
   const path = props.location.pathname;
@@ -19,12 +22,17 @@ const App = props => {
           transitionName={transition}
           transitionEnterTimeout={500}
           transitionLeaveTimeout={250}>
-          {cloneElement(props.children, { key: path })}
+          {React.cloneElement(props.children, { key: path })}
         </ReactCSSTransitionGroup>
       </main>
       <Modal />
     </div>
   );
+};
+
+App.propTypes = {
+  children: PropTypes.object,
+  location: PropTypes.object,
 };
 
 export default createPlayer(channelData)(App);

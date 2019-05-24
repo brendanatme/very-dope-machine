@@ -1,0 +1,8 @@
+/*
+  kit-switcher
+*/
+@import "../../styles/core/variables";
+@import "../../styles/core/utils";
+@import "../../styles/mixins/list";
+@import "../../styles/mixins/link";
+@import "../../styles/mixins/center_screen";

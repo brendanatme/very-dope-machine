@@ -1,21 +1,21 @@
-import React, { Component, PropTypes } from 'react';
+/**
+ * drum-pad.container
+ */
+import React from 'react';
+import PropTypes from 'prop-types';
 import KeyHandler, { KEYDOWN, KEYUP } from 'react-key-handler';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
-import { connectToPlayer } from '../modules/player';
-import { openModal } from '../actions/modalActions';
-import MidiConnection from './MidiConnection';
-import PadCircle from './PadCircle';
-import styles from '../styles/components/drum_pad.css';
+import { hasTouch } from '../../helpers';
+import { connectToPlayer } from '../../modules/player';
+import { openModal } from '../../actions/modalActions';
+import MidiConnection from '../MidiConnection';
+import PadCircle from '../PadCircle';
+import styles from './drum-pad.component.css';
+// TODO: split component from container
+// import DrumPadComponent from './drum-pad.component';
 
-let HAS_TOUCH = false;
-const getTouch = function() {
-  HAS_TOUCH = true;
-  window.removeEventListener('touchstart', getTouch);
-};
-window.addEventListener('touchstart', getTouch);
-
-class DrumPad extends Component {
+class DrumPad extends React.Component {
   static propTypes = {
     id: PropTypes.string,
     src: PropTypes.string,
@@ -26,24 +26,15 @@ class DrumPad extends Component {
     playSound: PropTypes.func
   }
 
-  constructor(props) {
-    super(props);
-
-    this.bindKeys = this.bindKeys.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleKeyUp = this.handleKeyUp.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
   state = {
     isPressed: false,
     isEditing: false
   }
 
-  handleClick(e) {
+  handleClick = (e) => {
     e.preventDefault();
 
-    if (HAS_TOUCH) {
+    if (hasTouch()) {
       this.handleKeyDown();
       return this.handleKeyUp();
     }
@@ -59,7 +50,7 @@ class DrumPad extends Component {
     });
   }
 
-  handleKeyDown() {
+  handleKeyDown = () => {
     // prevent unwanted drum rolls
     if (this.state.isPressed) {
       return;
@@ -72,11 +63,11 @@ class DrumPad extends Component {
     this.setState({ isPressed: true });
   }
 
-  handleKeyUp() {
+  handleKeyUp = () => {
     this.setState({ isPressed: false });
   }
 
-  bindKeys() {
+  bindKeys = () => {
     if (this.props.inputKey) {
       return (
         <div>
@@ -100,7 +91,7 @@ class DrumPad extends Component {
       [styles.drum_pad]: true,
       [styles.is_pressed]: this.state.isPressed,
       [styles.is_editing]: this.state.isEditing,
-      [styles.has_touch]: HAS_TOUCH
+      [styles.has_touch]: hasTouch(),
     });
 
     // need reference to circle

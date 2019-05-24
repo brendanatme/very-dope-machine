@@ -13,11 +13,12 @@
 // TODO:
 // can we hold the animation while the sound is playing?
 //
-import React, { Component } from 'react';
+import React from 'react';
+// import PropTypes from 'prop-types';
 import moJs from 'mo-js';
 import styles from '../styles/core/utils.css';
 
-class Circle extends Component {
+class Circle extends React.Component {
   componentDidMount() {
     this.anim = new moJs.Shape({
       parent: this.el,
@@ -48,7 +49,7 @@ class Circle extends Component {
     // in order to mount moJs animation to DOM
     return (
       <div
-        ref={el => {this.el = el;}}
+        ref={el => { this.el = el; }}
         className={styles.fill}
       />
     );

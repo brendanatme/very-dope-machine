@@ -1,22 +1,17 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Link, IndexLink, browserHistory } from 'react-router';
 import KeyHandler, { KEYDOWN } from 'react-key-handler';
 import { connect } from 'react-redux';
 import { openModal } from '../actions/modalActions';
 import styles from '../styles/components/nav.css';
 
-class Nav extends Component {
+class Nav extends React.Component {
   static propTypes = {
-      openModal: PropTypes.func
+    openModal: PropTypes.func,
   }
 
-  constructor(props) {
-    super(props);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleKeyDown({ key }) {
+  handleKeyDown = ({ key }) => {
     switch (key) {
       case "k":
         return browserHistory.push('/kits');
@@ -31,7 +26,7 @@ class Nav extends Component {
     }
   }
 
-  handleClick(e) {
+  handleClick = (e) => {
     e.preventDefault();
 
     this.props.openModal({ type: 'Hotkeys' });

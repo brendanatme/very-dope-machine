@@ -1,10 +1,11 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import KeyHandler, { KEYUP } from 'react-key-handler';
 import classNames from 'classnames';
-import DrumPadForm from './DrumPadForm';
-import Hotkeys from './Hotkeys';
+import DrumPadForm from './drum-pad-form';
+import Hotkeys from './hotkeys';
 import { closeModal } from '../actions/modalActions';
 import styles from '../styles/components/modal.css';
 import transition from '../styles/mixins/open_wh.css';
@@ -14,20 +15,14 @@ const ChildrenTypes = {
   Hotkeys
 };
 
-class Modal extends Component {
+class Modal extends React.Component {
   static propTypes = {
     closeModal: PropTypes.func,
+    content: PropTypes.object,
     options: PropTypes.object,
-    content: PropTypes.object
   }
 
-  constructor(props) {
-    super(props);
-
-    this.closeModal = this.closeModal.bind(this);
-  }
-
-  closeModal(e) {
+  closeModal = (e) => {
     e.preventDefault();
 
     this.props.closeModal(this.props.content.onClose);

@@ -1,0 +1,23 @@
+/*
+  app
+*/
+@import '../../styles/core/variables';
+
+body {
+  background: var(--dblue);
+  color: var(--white);
+  font-family: 'Nova Mono', monospace;
+  font-size: 16px;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.main {
+  flex: 1;
+  position: relative;
+}

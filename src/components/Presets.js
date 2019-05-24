@@ -13,32 +13,19 @@ class Presets extends Component {
     presets: PropTypes.object
   }
 
-  constructor(props) {
-    super(props);
-
-    this.addPreset = this.addPreset.bind(this);
-    this.loadPreset = this.loadPreset.bind(this);
-    this.removePreset = this.removePreset.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-  }
-
-  addPreset(e) {
+  addPreset = (e) => {
     e.preventDefault();
     this.props.addPreset(this.props.presets.all.length);
   }
 
-  removePreset(i) {
-    return (e) => {
-      e.preventDefault();
-      this.props.removePreset(i);
-    };
+  removePreset = (i) => (e) => {
+    e.preventDefault();
+    this.props.removePreset(i);
   }
 
-  loadPreset(i) {
-    return (e) => {
-      e.preventDefault();
-      this.props.loadPreset(i);
-    };
+  loadPreset = (i) => (e) => {
+    e.preventDefault();
+    this.props.loadPreset(i);
   }
 
   loadPreviousPreset() {
@@ -55,7 +42,7 @@ class Presets extends Component {
     this.props.loadPreset(key);
   }
 
-  handleKeyDown({ key }) {
+  handleKeyDown = ({ key }) => {
     switch (key) {
       case "ArrowUp":
         return this.loadPreviousPreset();

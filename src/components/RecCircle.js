@@ -8,11 +8,14 @@
 // TODO: find way to re-use one existing mo-js animtion object
 // https://github.com/legomushroom/mojs/issues/62
 //
-import React, { Component } from 'react';
+// TODO: this shares a lot of code with Circle.js
+// surely we can abstract the shared code
+import React from 'react';
+// import PropTypes from 'prop-types';
 import moJs from 'mo-js';
 import styles from '../styles/core/utils.css';
 
-class Circle extends Component {
+class Circle extends React.Component {
   componentDidMount() {
     this.anim = new moJs.Shape({
       parent: this.el,
@@ -44,7 +47,7 @@ class Circle extends Component {
     // in order to mount moJs animation to DOM
     return (
       <div
-        ref={el => {this.el = el;}}
+        ref={el => { this.el = el; }}
         className={styles.fill}
       />
     );
