@@ -20,7 +20,26 @@ export default class Player {
     Object.keys(busses).map(k => {
       this.busses[k] = new Bus();
     });
-    this.recorder = new Recorder();
+
+    /**
+     * build clicktrack in bus
+     */
+    this.busses.ClickTrack.add({
+      id: 'downbeat',
+      src: '/audio/Audiomatics - Perc 2.mp3',
+      volume: 0.2,
+      startTime: 0,
+      endTime: 500,
+    });
+    this.busses.ClickTrack.add({
+      id: 'upbeat',
+      src: '/audio/Audiomatics - Perc 2.mp3',
+      volume: 0.1,
+      startTime: 0,
+      endTime: 500,
+    });
+
+    this.recorder = new Recorder(this.busses.ClickTrack);
     this.updateBpm(bpm);
   }
 

@@ -17,6 +17,6 @@ let player;
 
 export const createPlayer = (busIds, bpm) => {
   player = new Player(busIds, bpm);
-}
+};
 
 export const getPlayer = () => player;

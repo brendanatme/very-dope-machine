@@ -10,6 +10,7 @@ import BpmInputComponent from './bpm-input.component';
 class BpmInput extends React.Component {
   static propTypes = {
     bpm: PropTypes.number,
+    updateBpm: PropTypes.func,
   }
 
   state = {

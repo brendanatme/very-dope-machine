@@ -15,21 +15,40 @@ export default class Recorder {
    */
   loopCount = 0;
 
+  constructor(clickTrackBus) {
+    this.clickTrackBus = clickTrackBus;
+  }
+
   /**
    * @todo when we begin recording, setup a click track according to the bpms
    */
-  setupClickTrack() {
+  playClickTrack() {
+    const ms = this.convertBpmToMs();
+    let beat = 1;
 
+    this.clickTrackBus.play({ id: 'downbeat' });
+    this.clickTrackPlayer = window.setInterval(() => {
+      beat++;
+      const id = beat % 4 === 1
+        ? 'downbeat'
+        : 'upbeat';
+      this.clickTrackBus.play({ id });
+    }, ms);
+  }
+
+  stopClickTrack() {
+    window.clearInterval(this.clickTrackPlayer);
   }
 
   updateBpm(bpm) {
     this.bpm = bpm;
   }
 
-  /**
-   * onStop passed from connected component
-   */
-  setupConnections(onStop) {
+  convertBpmToMs() {
+    return (60 / this.bpm) * 1000;
+  }
+
+  setupConnections() {
     const dest = window.Howler.ctx.createMediaStreamDestination();
 
     this.chunks = [];
@@ -44,8 +63,10 @@ export default class Recorder {
     /**
      * Make blob out of our chunks,
      * and generate audio file in memory
+     * @todo trim audio to the nearest bar
      */
     this.recorder.onstop = () => {
+      console.log(this.chunks); // eslint-disable-line
       const recordedBlob = new Blob(this.chunks, { type: 'audio/ogg; codecs=opus' });
 
       /**
@@ -59,38 +80,49 @@ export default class Recorder {
        * reset chunks after finished recording
        */
       this.chunks = [];
-
-      if (typeof onStop === 'function') {
-        onStop();
-      }
     };
 
     this.isSetup = true;
   }
 
   /**
-   * @todo when the recorder starts, play a click track according to BPM
+   * @todo when the recorder starts:
+   * - play a click track according to BPM
+   * - after 1 bar, begin recording
    * @param {function?} onStop
    */
   startRecording(onStop) {
     if (!this.isSetup) {
-      this.setupConnections(onStop);
+      this.setupConnections();
     }
-    this.recorder.start();
+
+    this.onStop = onStop;
+
+    this.playClickTrack();
+
+    setTimeout(() => {
+      this.recorder.start();
+    }, this.convertBpmToMs() * 4);
   }
 
   /**
    * stopRecording
    *
    * give recorder time to stop recording and run 'onstop' callback
-   *
    * return info to be used in redux store to create loop
    *
    * see store/player.state
+   *
+   * @todo: when recorder stops:
+   * - stop playing click track
    */
   stopRecording() {
+    this.stopClickTrack();
     this.recorder.stop();
 
+    if (typeof this.onStop === 'function') {
+      this.onStop();
+    }
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve({
