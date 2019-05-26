@@ -22,24 +22,20 @@ export default class Player {
     });
 
     /**
-     * build clicktrack in bus
+     * build clicktrack in html5 bus
+     * so as not to get recorded
      */
-    this.busses.ClickTrack.add({
-      id: 'downbeat',
-      src: '/audio/Audiomatics - Perc 2.mp3',
-      volume: 0.2,
-      startTime: 0,
-      endTime: 500,
-    });
-    this.busses.ClickTrack.add({
-      id: 'upbeat',
-      src: '/audio/Audiomatics - Perc 2.mp3',
-      volume: 0.1,
-      startTime: 0,
-      endTime: 500,
-    });
+    this.loopBusses.clickTrack = new HTML5Bus(
+      this.removeLoopBus,
+      'click-track',
+      '/audio/Audiomatics - Perc 2.mp3',
+      {
+        loop: false,
+        volume: 0.1,
+      },
+    );
 
-    this.recorder = new Recorder(this.busses.ClickTrack);
+    this.recorder = new Recorder(this.loopBusses.clickTrack);
     this.updateBpm(bpm);
   }
 

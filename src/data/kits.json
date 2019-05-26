@@ -1,29 +1,5 @@
 {
   "all": {
-    "audiomatics": {
-      "name": "AUDIOMATICS",
-      "srcs": {
-        "A": "/audio/Audiomatics - Perc 1.mp3",
-        "B": "/audio/Audiomatics - Perc 2.mp3",
-        "C": "/audio/Audiomatics - Perc 3.mp3",
-        "D": "/audio/Audiomatics - Perc 4.mp3",
-
-        "E": "/audio/Audiomatics - Clap 1.mp3",
-        "F": "/audio/Audiomatics - Clap 2.mp3",
-        "G": "/audio/Audiomatics - Clap 3.mp3",
-        "H": "/audio/Audiomatics - Hihat 3.mp3",
-
-        "I": "/audio/Audiomatics - Snare 2.mp3",
-        "J": "/audio/Audiomatics - Snare 3.mp3",
-        "K": "/audio/Audiomatics - Hihat 1.mp3",
-        "L": "/audio/Audiomatics - Hihat 2.mp3",
-
-        "M": "/audio/Audiomatics - Kick 1.mp3",
-        "N": "/audio/Audiomatics - Kick 2.mp3",
-        "O": "/audio/Audiomatics - Kick 3.mp3",
-        "P": "/audio/Audiomatics - Snare 1.mp3"
-      }
-    },
     "boomBapBaby": {
       "name": "BOOM BAP BABY",
       "srcs": {
@@ -46,6 +22,30 @@
         "N": "/audio/Boom Bap Baby - Kick 2.mp3",
         "O": "/audio/Boom Bap Baby - Snare 1.mp3",
         "P": "/audio/Boom Bap Baby - Snare 2.mp3"
+      }
+    },
+    "audiomatics": {
+      "name": "AUDIOMATICS",
+      "srcs": {
+        "A": "/audio/Audiomatics - Perc 1.mp3",
+        "B": "/audio/Audiomatics - Perc 2.mp3",
+        "C": "/audio/Audiomatics - Perc 3.mp3",
+        "D": "/audio/Audiomatics - Perc 4.mp3",
+
+        "E": "/audio/Audiomatics - Clap 1.mp3",
+        "F": "/audio/Audiomatics - Clap 2.mp3",
+        "G": "/audio/Audiomatics - Clap 3.mp3",
+        "H": "/audio/Audiomatics - Hihat 3.mp3",
+
+        "I": "/audio/Audiomatics - Snare 2.mp3",
+        "J": "/audio/Audiomatics - Snare 3.mp3",
+        "K": "/audio/Audiomatics - Hihat 1.mp3",
+        "L": "/audio/Audiomatics - Hihat 2.mp3",
+
+        "M": "/audio/Audiomatics - Kick 1.mp3",
+        "N": "/audio/Audiomatics - Kick 2.mp3",
+        "O": "/audio/Audiomatics - Kick 3.mp3",
+        "P": "/audio/Audiomatics - Snare 1.mp3"
       }
     },
     "dolfinRoom": {

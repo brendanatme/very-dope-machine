@@ -10,6 +10,8 @@
 export default class Recorder {
   isSetup = false
 
+  bytesPerMs = 12.5;
+
   /**
    * use to track loop bus names and ids
    */
@@ -23,16 +25,12 @@ export default class Recorder {
    * @todo when we begin recording, setup a click track according to the bpms
    */
   playClickTrack() {
-    const ms = this.convertBpmToMs();
-    let beat = 1;
+    const ms = this.getBpmInMs();
 
-    this.clickTrackBus.play({ id: 'downbeat' });
+    this.clickTrackBus.play();
     this.clickTrackPlayer = window.setInterval(() => {
-      beat++;
-      const id = beat % 4 === 1
-        ? 'downbeat'
-        : 'upbeat';
-      this.clickTrackBus.play({ id });
+      this.clickTrackBus.stop();
+      this.clickTrackBus.play();
     }, ms);
   }
 
@@ -44,8 +42,46 @@ export default class Recorder {
     this.bpm = bpm;
   }
 
-  convertBpmToMs() {
-    return (60 / this.bpm) * 1000;
+  getBpmInMs() {
+    return Math.round(60000 / this.bpm);
+  }
+
+  convertBytesToMs(size) {
+    return size / this.bytesPerMs;
+  }
+
+  roundMsToNearestBar(length) {
+    const bar = this.getBpmInMs() * 4;
+    const bars = Math.floor(length / bar);
+    if (bars === 0) {
+      return length;
+    } else {
+      return bars * bar;
+    }
+  }
+
+  /**
+   * trim blob to nearest bar
+   * deterime amount of bars based on size of blob
+   * and slice up to that point
+   * @param {Blob} blob
+   */
+  trimBlobToNearestBar(blob) {
+    let method = 'slice';
+
+    if (blob.mozSlice) {
+      method = 'mozSlice';
+    }
+
+    if (blob.webkitSlice) {
+      method = 'webkitSlice';
+    }
+
+    const sizeInMs = this.convertBytesToMs(blob.size);
+    const endInMs = this.roundMsToNearestBar(sizeInMs);
+    const endInBytes = Math.floor(endInMs * this.bytesPerMs);
+
+    return blob[method](0, endInBytes, 'audio/ogg; codecs=opus');
   }
 
   setupConnections() {
@@ -66,15 +102,15 @@ export default class Recorder {
      * @todo trim audio to the nearest bar
      */
     this.recorder.onstop = () => {
-      console.log(this.chunks); // eslint-disable-line
       const recordedBlob = new Blob(this.chunks, { type: 'audio/ogg; codecs=opus' });
+      const trimmedBlob = this.trimBlobToNearestBar(recordedBlob);
 
       /**
        * store this data on the object
        * to be accessed by this.stopRecording
        */
       this.latestLoopId = `L${++this.loopCount}`;
-      this.latestRecordedUrl = URL.createObjectURL(recordedBlob);
+      this.latestRecordedUrl = URL.createObjectURL(trimmedBlob);
 
       /**
        * reset chunks after finished recording
@@ -102,7 +138,7 @@ export default class Recorder {
 
     setTimeout(() => {
       this.recorder.start();
-    }, this.convertBpmToMs() * 4);
+    }, this.getBpmInMs() * 4);
   }
 
   /**

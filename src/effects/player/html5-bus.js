@@ -7,13 +7,14 @@ export default class HTML5Bus {
   /**
    * generate audio element
    */
-  constructor(removeLoopBus, id, src) {
+  constructor(removeLoopBus, id, src, options = { loop: true, volume: 1 }) {
     this.removeLoopBus = removeLoopBus;
     this.id = id;
     this.src = src;
     this.audioTag = document.createElement('audio');
     this.audioTag.id = `html5-bus-${id}`;
-    this.audioTag.loop = true;
+    this.audioTag.loop = options.loop;
+    this.audioTag.volume = options.volume;
     this.audioTag.src = this.src;
     document.body.appendChild(this.audioTag);
   }
@@ -30,7 +31,7 @@ export default class HTML5Bus {
    */
   stop() {
     this.audioTag.pause();
-    //this.audioTag.seek(0); // TODO: why commented out?
+    this.audioTag.load();
   }
 
   /**
