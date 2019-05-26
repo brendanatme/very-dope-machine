@@ -10,3 +10,9 @@ export const Routes = {
   KITS: '/kits',
   PRESETS: '/presets',
 };
+
+// key codes
+export const KeyCodes = {
+  ENTER: 13,
+  ESC: 27,
+};

@@ -5,8 +5,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './input.component.css';
 
-const TextInput = React.forwardRef(({
+const Input = React.forwardRef(({
   className = '',
+  error,
   id,
   name,
   onBlur = null,
@@ -15,9 +16,9 @@ const TextInput = React.forwardRef(({
   type = 'text',
   value,
 }, ref) => (
-  <div className={`${styles.input__wrapper} ${className}`}>
+  <div className={`${styles.input__wrapper} ${error ? styles.input__wrapper__has_error : ''} ${className}`}>
     <input
-      className={styles.input}
+      className={`${styles.input} ${error ? styles.input__has_error : ''}`}
       id={id}
       name={name}
       onBlur={onBlur}
@@ -30,7 +31,7 @@ const TextInput = React.forwardRef(({
   </div>
 ));
 
-TextInput.propTypes = {
+Input.propTypes = {
   className: PropTypes.string,
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -41,4 +42,4 @@ TextInput.propTypes = {
   value: PropTypes.string.isRequired,
 };
 
-export default TextInput;
+export default Input;

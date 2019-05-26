@@ -1,10 +1,25 @@
 /*
   input
 */
-.input__wrapper {
+@import "../../styles/core/variables";
 
+.input__wrapper,
+.input {
+  position: relative;
+  width: 100%;
 }
 
 .input {
+  appearance: none;
+  background: inherit;
+  border: 0;
+  border-radius: 2px;
+  color: inherit;
+  font-family: inherit;
+  outline: 2px solid var(--blue);
+  padding: 5px 10px;
 
+  &.input__has_error {
+    outline: 2px solid var(--red);
+  }
 }

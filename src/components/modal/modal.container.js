@@ -1,5 +1,8 @@
 /**
  * modal.container
+ *
+ * TODO: should only listen for key presses when active
+ * currently, if you use the text input, and press escape, this component throws an error
  */
 import React from 'react';
 import PropTypes from 'prop-types';

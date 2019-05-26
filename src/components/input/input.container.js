@@ -8,6 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
+import { KeyCodes } from '../../constants';
 import InputComponent from './input.component';
 
 export default class Input extends React.PureComponent {
@@ -27,20 +28,23 @@ export default class Input extends React.PureComponent {
 
   static defaultProps = {
     delay: 350,
+    validate: () => false, // false means valid; strings are the names of the errors
   }
 
   constructor(props, context) {
     super(props, context);
 
-    this.VALIDATE = input => new Promise(resolve => resolve(input));
-
     /**
      * create a debounced event handler to make
      */
     this.debouncedOnChange = debounce(this.props.onChange, this.props.delay);
+
     this.input = React.createRef();
     this.isTyping = false;
-    this.state = { value: props.value, error: '' };
+    this.state = {
+      error: '',
+      value: props.value,
+    };
   }
 
   /**
@@ -68,9 +72,7 @@ export default class Input extends React.PureComponent {
     }
 
     if (nextProps.value !== this.props.value && !this.isTyping) {
-      this.setState({
-        value: nextProps.value,
-      });
+      this.setState({ value: nextProps.value });
     }
   }
 
@@ -78,6 +80,7 @@ export default class Input extends React.PureComponent {
    * when component will unmount, blur the input element
    */
   componentWillUnmount() {
+    this.debouncedOnChange.cancel();
     if (this.input.current && this.input.current.blur) {
       this.input.current.blur();
     }
@@ -88,19 +91,21 @@ export default class Input extends React.PureComponent {
    * run callback after successful input has validated
    * after running, reset isTyping state to default
    */
-  handleValid(value) {
-    if (!this.props.delay) {
+  handleValid(value, immediate = false) {
+    this.isTyping = false;
+
+    if (immediate) {
       this.props.onChange(value);
     } else {
       this.debouncedOnChange(value);
-      this.isTyping = false;
     }
 
     this.setState({ error: '' });
   }
 
-  handleError(errors) {
-    this.setState({ error: errors.map(err => err.error).join(', ') });
+  handleError(error) {
+    this.isTyping = false;
+    this.setState({ error });
   }
 
   /**
@@ -109,9 +114,8 @@ export default class Input extends React.PureComponent {
    * clear the debounced callback
    * and set a new one
    */
-  handleChange = (e) => { // eslint-disable-line no-unused-vars
+  handleChange = (e, immediate = false, cb = () => {}) => {
     const value = e.target.value;
-    const validate = this.props.validate || this.VALIDATE;
 
     this.isTyping = true;
 
@@ -122,14 +126,20 @@ export default class Input extends React.PureComponent {
       this.props.onChangeRaw(value);
     }
 
-    if (this.props.delay) {
-      this.debouncedOnChange.cancel();
-    }
+    this.debouncedOnChange.cancel();
 
     this.setState({ value }, () => {
-      validate(value)
-        .then(() => this.handleValid(value))
-        .catch(err => this.handleError(err));
+      const error = this.props.validate(value);
+
+      if (error) {
+        this.handleError(error);
+      } else {
+        this.handleValid(value, immediate);
+      }
+
+      if (immediate) {
+        cb();
+      }
     });
   }
 
@@ -138,25 +148,18 @@ export default class Input extends React.PureComponent {
    * handle the latest changed value
    * and call an onblur prop if provided
    */
-  handleBlur = (e) => {
-    this.handleChange(e);
-    if (typeof this.props.onBlur === 'function') {
-      this.props.onBlur();
-    }
-  }
+  handleBlur = (e) => this.handleChange(e, true, this.props.onBlur);
 
   /**
    * handleKeyDown
    *
-   * when ESC or RETURN is pressed,
+   * when ESC or ENTER is pressed,
    * blur the element
-   *
-   * when up or down is pressed,
-   * and the input type is a number,
-   * increment/decrement the value
    */
   handleKeyDown = (e) => {
-    console.log('handleKeyDown', e); // eslint-disable-line
+    if (e.keyCode === KeyCodes.ENTER || e.keyCode === KeyCodes.ESC) {
+      this.handleBlur(e);
+    }
   }
 
   render() {
