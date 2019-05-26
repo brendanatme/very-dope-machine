@@ -2,15 +2,21 @@
  * bpm-input.container
  */
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { updateBpm } from '../../store/bpm.state';
 import BpmInputComponent from './bpm-input.component';
 
-export default class BpmInput extends React.Component {
-  state = {
-    isEditing: false,
-    value: '90',
+class BpmInput extends React.Component {
+  static propTypes = {
+    bpm: PropTypes.number,
   }
 
-  onChange = (value) => this.setState({ value })
+  state = {
+    isEditing: false,
+  }
+
+  onChange = (value) => this.props.updateBpm(value);
 
   startEditing = () => this.setState({ isEditing: true });
 
@@ -50,8 +56,12 @@ export default class BpmInput extends React.Component {
         onChange={this.onChange}
         onClick={this.toggleEdit}
         validate={this.validate}
-        value={this.state.value}
+        value={this.props.bpm}
       />
     );
   }
 }
+
+const mapStateToProps = ({ bpm }) => ({ bpm: bpm.bpm });
+
+export default connect(mapStateToProps, { updateBpm })(BpmInput);

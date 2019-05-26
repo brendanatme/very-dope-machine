@@ -1,9 +1,10 @@
 import Lockr from 'lockr';
 import Immutable from 'immutable';
 import { NAMESPACE } from '../constants';
+import { BPM_DUMP } from './bpm.state';
+import { BUS_DUMP } from './busses.state';
 import { PAD_DUMP } from './pads.state';
 import { KIT_DUMP } from './kits.state';
-import { BUS_DUMP } from './busses.state';
 
 // data
 const presetData = {
@@ -40,9 +41,10 @@ const loadPresetAction = (i) => ({
 // thunk
 export const loadPreset = (i) => {
   const {
+    bpm,
+    busses,
     kits,
     pads,
-    busses,
   } = Lockr.get(`${NAMESPACE}_${i}`);
 
   return dispatch => {
@@ -59,6 +61,11 @@ export const loadPreset = (i) => {
     dispatch({
       type: BUS_DUMP,
       payload: busses,
+    });
+
+    dispatch({
+      type: BPM_DUMP,
+      payload: bpm,
     });
 
     dispatch(loadPresetAction(i));
