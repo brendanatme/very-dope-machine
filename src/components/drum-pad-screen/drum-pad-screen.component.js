@@ -15,6 +15,7 @@ import Loops from '../loops';
 import DrumPad from '../drum-pad';
 import Recorder from '../recorder';
 import BPMInput from '../bpm-input';
+import LoopPlayButton from '../loop-play-button';
 import styles from './drum-pad-screen.component.css';
 
 const DrumPadScreen = ({ pads }) => (
@@ -43,6 +44,7 @@ const DrumPadScreen = ({ pads }) => (
     <div className={styles.footer}>
       <BPMInput />
       <Recorder />
+      <LoopPlayButton />
     </div>
   </div>
 );

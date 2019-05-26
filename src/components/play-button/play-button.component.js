@@ -14,7 +14,7 @@ const PlayButton = ({ isPlaying, handleClick }) => (
 
 PlayButton.propTypes = {
   handleClick: PropTypes.func,
-  isPlaying: PropTypes.bool
+  isPlaying: PropTypes.bool,
 };
 
 export default PlayButton;

@@ -9,6 +9,7 @@
 import Bus from './bus';
 import HTML5Bus from './html5-bus';
 import Recorder from './recorder';
+import { barToMs } from './helpers';
 
 export default class Player {
   bpm = 0
@@ -25,7 +26,7 @@ export default class Player {
      * build clicktrack in html5 bus
      * so as not to get recorded
      */
-    this.loopBusses.clickTrack = new HTML5Bus(
+    this.clickTrackBus = new HTML5Bus(
       this.removeLoopBus,
       'click-track',
       '/audio/Audiomatics - Perc 2.mp3',
@@ -35,7 +36,7 @@ export default class Player {
       },
     );
 
-    this.recorder = new Recorder(this.loopBusses.clickTrack);
+    this.recorder = new Recorder(this.clickTrackBus);
     this.updateBpm(bpm);
   }
 
@@ -72,6 +73,31 @@ export default class Player {
     Object.keys(this.busses).map(k => {
       this.busses[k].stop();
     });
+  }
+
+  _stopAllLoops() {
+    Object.keys(this.loopBusses).map(k => {
+      this.loopBusses[k].stop();
+    });
+  }
+
+  _playAllLoops() {
+    Object.keys(this.loopBusses).map(k => {
+      this.loopBusses[k].play();
+    });
+  }
+
+  stopAllLoops() {
+    window.clearInterval(this.playAllInterval);
+    this._stopAllLoops();
+  }
+
+  playAllLoops() {
+    this._playAllLoops();
+    this.playAllInterval = window.setInterval(() => {
+      this._stopAllLoops();
+      this._playAllLoops();
+    }, barToMs(this.bpm));
   }
 
   startRecording = (onStop) => {

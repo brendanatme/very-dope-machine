@@ -10,6 +10,8 @@ export const PLAYER_DUMP = 'player_dump';
 export const PLAYER_CREATED = 'player_created';
 export const START_RECORDING = 'start_recording';
 export const STOP_RECORDING = 'stop_recording';
+export const PLAY_ALL = 'play_all';
+export const STOP_ALL = 'stop_all';
 
 // actions
 export const updateBpm = (bpm) => (dispatch) => {
@@ -39,6 +41,16 @@ export const createPlayer = () => (dispatch, getState) => {
 export const startRecording = (onStop) => (dispatch) => {
   getPlayer().recorder.startRecording(onStop);
   dispatch({ type: START_RECORDING });
+};
+
+export const playAll = () => (dispatch) => {
+  getPlayer().playAllLoops();
+  dispatch({ type: PLAY_ALL });
+};
+
+export const stopAll = () => (dispatch) => {
+  getPlayer().stopAllLoops();
+  dispatch({ type: STOP_ALL });
 };
 
 /**

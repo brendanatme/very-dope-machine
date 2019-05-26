@@ -7,6 +7,8 @@
  *
  * TODO: tie into BPMs to trim recording according to bars
  */
+import { barToMs, bpmToMs } from './helpers';
+
 export default class Recorder {
   isSetup = false
 
@@ -22,10 +24,10 @@ export default class Recorder {
   }
 
   /**
-   * @todo when we begin recording, setup a click track according to the bpms
+   * when we begin recording, setup a click track according to the bpms
    */
   playClickTrack() {
-    const ms = this.getBpmInMs();
+    const ms = bpmToMs(this.bpm);
 
     this.clickTrackBus.play();
     this.clickTrackPlayer = window.setInterval(() => {
@@ -42,16 +44,12 @@ export default class Recorder {
     this.bpm = bpm;
   }
 
-  getBpmInMs() {
-    return Math.round(60000 / this.bpm);
-  }
-
   convertBytesToMs(size) {
     return size / this.bytesPerMs;
   }
 
   roundMsToNearestBar(length) {
-    const bar = this.getBpmInMs() * 4;
+    const bar = barToMs(this.bpm);
     const bars = Math.floor(length / bar);
     if (bars === 0) {
       return length;
@@ -138,7 +136,7 @@ export default class Recorder {
 
     setTimeout(() => {
       this.recorder.start();
-    }, this.getBpmInMs() * 4);
+    }, bpmToMs(this.bpm) * 4);
   }
 
   /**
