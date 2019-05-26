@@ -6,13 +6,11 @@ import PropTypes from 'prop-types';
 import KeyHandler, { KEYDOWN, KEYUP } from 'react-key-handler';
 import { connect } from 'react-redux';
 import { hasTouch } from '../../helpers';
-import { connectToPlayer } from '../../modules/player';
+import { withPlayer } from '../../effects/player';
 import { openModal } from '../../store/modal.state';
 import MidiConnection from '../midi-connection';
 import PadCircle from '../pad-circle';
 import styles from './drum-pad.component.css';
-// TODO: split component from container
-// import DrumPadComponent from './drum-pad.component';
 
 class DrumPad extends React.Component {
   static propTypes = {
@@ -111,6 +109,6 @@ class DrumPad extends React.Component {
   }
 }
 
-const BusDrumPad = connectToPlayer()(DrumPad);
+const BusDrumPad = withPlayer(DrumPad);
 
 export default connect(null, { openModal })(BusDrumPad);

@@ -23,7 +23,10 @@ export default class Input extends React.PureComponent {
     onChangeRaw: PropTypes.func,
     type: PropTypes.string,
     validate: PropTypes.func,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]).isRequired,
   }
 
   static defaultProps = {

@@ -4,7 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { updateBpm } from '../../store/bpm.state';
+import { updateBpm } from '../../store/player.state';
 import BpmInputComponent from './bpm-input.component';
 
 class BpmInput extends React.Component {
@@ -62,6 +62,6 @@ class BpmInput extends React.Component {
   }
 }
 
-const mapStateToProps = ({ bpm }) => ({ bpm: bpm.bpm });
+const mapStateToProps = ({ player }) => ({ bpm: player.bpm });
 
 export default connect(mapStateToProps, { updateBpm })(BpmInput);

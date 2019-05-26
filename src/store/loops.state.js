@@ -1,4 +1,5 @@
 import Immutable from 'immutable';
+import { getPlayer } from '../effects/player';
 
 // data
 const loopsData = {};
@@ -8,15 +9,39 @@ export const ADD_LOOP = 'add_loop';
 export const REMOVE_LOOP = 'remove_loop';
 
 // actions
+
+/**
+ * addLoop
+ *
+ * add a loop to display
+ * and add this loop to the player as well
+ *
+ * @param {{id: string, name: string, url: string}} payload
+ */
 export const addLoop = (payload) => ({
   type: ADD_LOOP,
-  payload,
+  payload: {
+    id: payload.id,
+    name: payload.name,
+  },
 });
 
-export const removeLoop = (payload) => ({
-  type: REMOVE_LOOP,
-  payload,
-});
+/**
+ * removeLoop
+ *
+ * destroy loop on player object
+ * and update UI
+ *
+ * @param {string} id loop id
+ */
+export const removeLoop = (id) => (dispatch) => {
+  getPlayer().loopBusses[id].destroy();
+
+  dispatch({
+    type: REMOVE_LOOP,
+    payload: id,
+  });
+};
 
 // reducer
 export const reducer = function(state = loopsData, { type, payload }) {

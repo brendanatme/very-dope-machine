@@ -19,16 +19,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import KeyHandler, { KEYUP } from 'react-key-handler';
 import { connect } from 'react-redux';
-import { connectToRecorder } from '../../modules/player';
-import { addLoop, removeLoop } from '../../store/loops.state';
+import { startRecording, stopRecording } from '../../store/player.state';
 import RecCircle from '../rec-circle';
 import styles from './recorder.component.css';
 
 class Recorder extends React.Component {
   static propTypes = {
-    recorder: PropTypes.object,
-    addLoop: PropTypes.func,
-    removeLoop: PropTypes.func
+    startRecording: PropTypes.func,
+    stopRecording: PropTypes.func
   }
 
   state = {
@@ -36,31 +34,27 @@ class Recorder extends React.Component {
   }
 
   startRecording() {
-    const { addLoop, removeLoop } = this.props;
-
-    // pass props to recorder that recorder needs
-    // since recorder is not hooked up to react/redux
-    this.props.recorder.startRecording({
-      addLoop,
-      removeLoop,
-      onStop: () => { this.setState({ isRecording: false }); }
+    this.props.startRecording(() => {
+      this.setState({ isRecording: false });
     });
 
-    // when we start recording,
-    // we also start playing
     this.setState({ isRecording: true });
   }
 
-  // stop recording
-  // exit record mode
-  // update state to reflect
+  /**
+   * stop recording
+   * exit record mode
+   * update state to reflect
+   */
   stopRecording() {
-    this.props.recorder.stopRecording();
+    this.props.stopRecording();
   }
 
-  // when spacebar is pressed:
-  // if recording, stop
-  // else start recording
+  /**
+   * when spacebar is pressed:
+   * if recording, stop
+   * else start recording
+   */
   toggleRecord = (e) => {
     e.preventDefault();
 
@@ -92,6 +86,4 @@ class Recorder extends React.Component {
   }
 }
 
-const ReduxRecorder = connect(null, { addLoop, removeLoop })(Recorder);
-
-export default connectToRecorder(ReduxRecorder);
+export default connect(null, { startRecording, stopRecording })(Recorder);

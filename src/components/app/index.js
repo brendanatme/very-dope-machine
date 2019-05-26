@@ -1,2 +1,2 @@
-import App from './app.component';
+import App from './app.container';
 export default App;

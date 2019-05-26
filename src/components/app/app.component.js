@@ -4,9 +4,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { CSSTransitionGroup } from 'react-transition-group';
-import { createPlayer } from '../../modules/player';
 import { Routes } from '../../constants';
-import bussesData from '../../data/busses.json';
 import transition from '../../styles/mixins/page.css';
 import DrumPadScreen from '../drum-pad-screen';
 import KitSwitcherScreen from '../kit-switcher-screen';
@@ -23,7 +21,7 @@ const App = () => (
         transitionName={transition}
         transitionEnterTimeout={500}
         transitionLeaveTimeout={250}>
-        <Route exact={true} path={Routes.PADS} component={DrumPadScreen} />
+        <Route path={Routes.PADS} component={DrumPadScreen} exact={true} />
         <Route path={Routes.KITS} component={KitSwitcherScreen} />
         <Route path={Routes.PRESETS} component={PresetsScreen} />
       </CSSTransitionGroup>
@@ -32,4 +30,4 @@ const App = () => (
   </div>
 );
 
-export default createPlayer(bussesData)(App);
+export default App;

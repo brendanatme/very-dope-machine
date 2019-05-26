@@ -4,7 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { connectToLoop } from '../../modules/player';
+import { withLoop } from '../../effects/player';
 import { removeLoop } from '../../store/loops.state';
 import CloseButton from '../close-button';
 import PlayButton from '../play-button';
@@ -12,8 +12,8 @@ import styles from './loop.component.css';
 
 class Loop extends React.Component {
   static propTypes = {
-    bus: PropTypes.object,
     id: PropTypes.string,
+    loop: PropTypes.object,
     name: PropTypes.string,
     removeLoop: PropTypes.func,
   }
@@ -26,8 +26,8 @@ class Loop extends React.Component {
     e.preventDefault();
 
     this.state.isPlaying
-      ? this.props.bus.stop()
-      : this.props.bus.play();
+      ? this.props.loop.stop()
+      : this.props.loop.play();
 
     this.setState({
       isPlaying: !this.state.isPlaying,
@@ -37,7 +37,10 @@ class Loop extends React.Component {
   handleClose = (e) => {
     e.preventDefault();
 
-    this.props.bus.destroy();
+    /**
+     * TODO: destroying the bus is a side-effect
+     * it should happen as part of the removeLoop action
+     */
     this.props.removeLoop(this.props.id);
   }
 
@@ -55,6 +58,6 @@ class Loop extends React.Component {
   }
 }
 
-const connectedLoop = connectToLoop(Loop);
+const connectedLoop = withLoop(Loop);
 
 export default connect(null, { removeLoop })(connectedLoop);

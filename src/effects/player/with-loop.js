@@ -1,26 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getPlayer } from './create-player';
 
-export const connectToLoop = (Composed) => {
+export const withLoop = (Composed) => {
   return class LoopConnection extends React.Component {
     static propTypes = {
       id: PropTypes.string,
     }
 
-    static contextTypes = {
-      player: PropTypes.object,
-    }
-
-    constructor(props, context) {
+    constructor(props) {
       super(props);
 
-      this.player = context.player;
+      this.player = getPlayer();
     }
 
     render() {
       return (
         <Composed
-          bus={this.player.loopBusses[this.props.id]}
+          loop={this.player.loopBusses[this.props.id]}
           {...this.props}
         />
       );

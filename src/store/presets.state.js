@@ -1,9 +1,9 @@
 import Lockr from 'lockr';
 import Immutable from 'immutable';
 import { NAMESPACE } from '../constants';
-import { BPM_DUMP } from './bpm.state';
 import { BUS_DUMP } from './busses.state';
 import { PAD_DUMP } from './pads.state';
+import { PLAYER_DUMP } from './player.state';
 import { KIT_DUMP } from './kits.state';
 
 // data
@@ -41,31 +41,31 @@ const loadPresetAction = (i) => ({
 // thunk
 export const loadPreset = (i) => {
   const {
-    bpm,
     busses,
     kits,
     pads,
+    player,
   } = Lockr.get(`${NAMESPACE}_${i}`);
 
   return dispatch => {
     dispatch({
+      payload: kits,
       type: KIT_DUMP,
-      payload: kits
     });
 
     dispatch({
+      payload: pads,
       type: PAD_DUMP,
-      payload: pads
     });
 
     dispatch({
-      type: BUS_DUMP,
       payload: busses,
+      type: BUS_DUMP,
     });
 
     dispatch({
-      type: BPM_DUMP,
-      payload: bpm,
+      payload: player,
+      type: PLAYER_DUMP,
     });
 
     dispatch(loadPresetAction(i));

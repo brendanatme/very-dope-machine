@@ -39,7 +39,10 @@ Input.propTypes = {
   onChange: PropTypes.func.isRequired,
   onKeyDown: PropTypes.func,
   type: PropTypes.string,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]).isRequired,
 };
 
 export default Input;
