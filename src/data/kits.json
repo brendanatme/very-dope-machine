@@ -1,29 +1,5 @@
 {
   "all": {
-    "boomBapBaby": {
-      "name": "BOOM BAP BABY",
-      "srcs": {
-        "A": "/audio/Boom Bap Baby - Rare Horn Chop.mp3",
-        "B": "/audio/Boom Bap Baby - Dont Let Me Down.mp3",
-        "C": "/audio/Boom Bap Baby - OOOOHHHHH.mp3",
-        "D": "/audio/Boom Bap Baby - Rhodes.mp3",
-
-        "E": "/audio/Boom Bap Baby - Clap.mp3",
-        "F": "/audio/Boom Bap Baby - Ride.mp3",
-        "G": "/audio/Boom Bap Baby - Perc 1.mp3",
-        "H": "/audio/Boom Bap Baby - Perc 2.mp3",
-
-        "I": "/audio/Boom Bap Baby - Hi Hat 1.mp3",
-        "J": "/audio/Boom Bap Baby - Hi Hat 2.mp3",
-        "K": "/audio/Boom Bap Baby - Open Hi Hat.mp3",
-        "L": "/audio/Boom Bap Baby - Crash.mp3",
-
-        "M": "/audio/Boom Bap Baby - Kick 1.mp3",
-        "N": "/audio/Boom Bap Baby - Kick 2.mp3",
-        "O": "/audio/Boom Bap Baby - Snare 1.mp3",
-        "P": "/audio/Boom Bap Baby - Snare 2.mp3"
-      }
-    },
     "audiomatics": {
       "name": "AUDIOMATICS",
       "srcs": {
@@ -46,6 +22,30 @@
         "N": "/audio/Audiomatics - Kick 2.mp3",
         "O": "/audio/Audiomatics - Kick 3.mp3",
         "P": "/audio/Audiomatics - Snare 1.mp3"
+      }
+    },
+    "boomBapBaby": {
+      "name": "BOOM BAP BABY",
+      "srcs": {
+        "A": "/audio/Boom Bap Baby - Rare Horn Chop.mp3",
+        "B": "/audio/Boom Bap Baby - Dont Let Me Down.mp3",
+        "C": "/audio/Boom Bap Baby - OOOOHHHHH.mp3",
+        "D": "/audio/Boom Bap Baby - Rhodes.mp3",
+
+        "E": "/audio/Boom Bap Baby - Clap.mp3",
+        "F": "/audio/Boom Bap Baby - Ride.mp3",
+        "G": "/audio/Boom Bap Baby - Perc 1.mp3",
+        "H": "/audio/Boom Bap Baby - Perc 2.mp3",
+
+        "I": "/audio/Boom Bap Baby - Hi Hat 1.mp3",
+        "J": "/audio/Boom Bap Baby - Hi Hat 2.mp3",
+        "K": "/audio/Boom Bap Baby - Open Hi Hat.mp3",
+        "L": "/audio/Boom Bap Baby - Crash.mp3",
+
+        "M": "/audio/Boom Bap Baby - Kick 1.mp3",
+        "N": "/audio/Boom Bap Baby - Kick 2.mp3",
+        "O": "/audio/Boom Bap Baby - Snare 1.mp3",
+        "P": "/audio/Boom Bap Baby - Snare 2.mp3"
       }
     },
     "dolfinRoom": {
@@ -97,5 +97,5 @@
       }
     }
   },
-  "selected": "audiomatics"
+  "selected": "boomBapBaby"
 }
