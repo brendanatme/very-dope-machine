@@ -1,13 +1,14 @@
 /**
  * presets.container
  */
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getNextFromCollection, getPreviousFromCollection } from '../../helpers';
 import { addPreset, removePreset, loadPreset } from '../../store/presets.state';
 import PresetsComponent from './presets.component';
 
-class Presets extends Component {
+class Presets extends React.Component {
   static propTypes = {
     addPreset: PropTypes.func,
     removePreset: PropTypes.func,

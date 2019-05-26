@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import Input from '../input';
 import styles from './bpm-input.component.css';
 
 const BPMInput = ({
@@ -12,7 +13,13 @@ const BPMInput = ({
 }) => (
   <div className={styles.bpm} onClick={onClick}>
     {isEditing ? (
-      <input className={styles.input} type="number" value={value} />
+      <Input
+        className={styles.input}
+        id="bpm-input"
+        name="bpm-input"
+        type="number"
+        value={value}
+      />
     ) : (
       <span className={styles.input}>{value}</span>
     )}

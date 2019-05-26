@@ -3,25 +3,29 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, IndexLink, browserHistory } from 'react-router';
+import { NavLink, withRouter } from 'react-router-dom';
 import KeyHandler, { KEYDOWN } from 'react-key-handler';
 import { connect } from 'react-redux';
+import { Routes } from '../../constants';
 import { openModal } from '../../store/modal.state';
 import styles from './nav.component.css';
 
 class Nav extends React.Component {
   static propTypes = {
+    history: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
     openModal: PropTypes.func,
   }
 
   handleKeyDown = ({ key }) => {
     switch (key) {
       case "k":
-        return browserHistory.push('/kits');
+        return this.props.history.push(Routes.KITS);
       case "p":
-        return browserHistory.push('/');
+        return this.props.history.push(Routes.PADS);
       case "l":
-        return browserHistory.push('/presets');
+        return this.props.history.push(Routes.PRESETS);
       case "h":
         return this.props.openModal({ type: 'Hotkeys' });
       default:
@@ -38,25 +42,26 @@ class Nav extends React.Component {
   render() {
     return (
       <header className={styles.nav}>
-        <IndexLink
-          className={styles.link}
+        <NavLink
           activeClassName={styles.active}
+          className={styles.link}
+          exact={true}
           to="/">
           <span className={styles.link_text}>PADS<span className={styles.hotkey}> (p)</span></span>
-        </IndexLink>
-        <Link
+        </NavLink>
+        <NavLink
           className={styles.link}
           activeClassName={styles.active}
           to="/kits">
           <span className={styles.link_text}>KITS<span className={styles.hotkey}> (k)</span></span>
-        </Link>
+        </NavLink>
         <h1 className={styles.item}>VDM</h1>
-        <Link
+        <NavLink
           className={styles.link}
           activeClassName={styles.active}
           to="/presets">
           <span className={styles.link_text}>SAVE/LOAD<span className={styles.hotkey}> (l)</span></span>
-        </Link>
+        </NavLink>
         <a href="javascript:void(0)"
           className={styles.link}
           onClick={this.handleClick}>
@@ -87,4 +92,4 @@ class Nav extends React.Component {
   }
 }
 
-export default connect(null, { openModal })(Nav);
+export default withRouter(connect(null, { openModal })(Nav));

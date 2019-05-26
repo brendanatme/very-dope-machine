@@ -4,7 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { CSSTransitionGroup } from 'react-transition-group';
 import KeyHandler, { KEYUP } from 'react-key-handler';
 import { closeModal } from '../../store/modal.state';
 import transition from '../../styles/mixins/open_wh.css';
@@ -49,7 +49,7 @@ class Modal extends React.Component {
           className={styles.modal_bg}
         />
 
-        <ReactCSSTransitionGroup
+        <CSSTransitionGroup
           transitionName={transition}
           transitionEnterTimeout={750}
           transitionLeaveTimeout={500}>
@@ -58,7 +58,7 @@ class Modal extends React.Component {
               <ContentComponent key={0} {...content.props} />
             </div>
           )}
-        </ReactCSSTransitionGroup>
+        </CSSTransitionGroup>
 
         <a href="javascript:void(0)"
           onClick={this.closeModal}

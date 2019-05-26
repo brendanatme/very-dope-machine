@@ -1,14 +1,14 @@
 /* eslint-disable import/default */
 import React from 'react';
+import Lockr from 'lockr';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
-import Lockr from 'lockr';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { configureStore } from './store';
-import routes from './routes';
 import { NAMESPACE } from './constants';
 import { LOAD_PRESET } from './store/presets.state';
 import { SWITCH_KIT } from './store/kits.state';
+import App from './components/app';
 require('./favicon.ico'); // Tell webpack to load favicon.ico
 import './styles/global.css'; // Import global CSS (ignore CSS Modules)
 
@@ -29,6 +29,8 @@ if (presets && presets.all) {
 
 render(
   <Provider store={store}>
-    <Router history={browserHistory} routes={routes} />
+    <Router>
+      <App />
+    </Router>
   </Provider>, document.getElementById('app')
 );
