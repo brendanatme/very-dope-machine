@@ -8,9 +8,7 @@
   "scripts": {
     "preinstall": "node tools/nodeVersionCheck.js",
     "setup": "node tools/setup/setupMessage.js && npm install && node tools/setup/setup.js",
-    "start-message": "babel-node tools/startMessage.js",
-    "prestart": "npm-run-all --parallel start-message",
-    "start": "npm-run-all --parallel open:src lint:watch",
+    "dev": "npm-run-all --parallel open:src lint:watch",
     "open:src": "babel-node tools/srcServer.js",
     "open:dist": "babel-node tools/distServer.js",
     "lint": "esw webpack.config.* src tools --color",
@@ -19,6 +17,7 @@
     "remove-dist": "rimraf ./dist",
     "prebuild": "npm run clean-dist",
     "build": "babel-node tools/build.js && cp -R ./src/audio ./dist && npm run open:dist",
+    "start": "node server",
     "test": "jest",
     "test:CI": "babel-node tools/testCi.js",
     "test:cover": "npm run test -- --coverage ",
@@ -30,6 +29,8 @@
   "author": "brendanatme",
   "license": "MIT",
   "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
     "howler": "2.0.2",
     "immutable": "3.8.1",
     "lockr": "0.8.4",
