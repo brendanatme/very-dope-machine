@@ -10,7 +10,6 @@ import DrumPadScreen from '../drum-pad-screen';
 import KitSwitcherScreen from '../kit-switcher-screen';
 import PresetsScreen from '../presets-screen';
 import Nav from '../nav';
-import Modal from '../modal';
 import styles from './app.component.css';
 
 const App = () => (
@@ -26,7 +25,7 @@ const App = () => (
         <Route path={Routes.PRESETS} component={PresetsScreen} />
       </CSSTransitionGroup>
     </main>
-    <Modal />
+    <div id="modal-root" />
   </div>
 );
 

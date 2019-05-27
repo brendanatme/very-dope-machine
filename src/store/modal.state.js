@@ -12,15 +12,15 @@ export const CLOSE_MODAL = 'close_modal';
 
 // actions
 export const closeModal = (onClose) => {
-  if (onClose && typeof onClose === 'function') {
+  if (typeof onClose === 'function') {
     onClose();
   }
 
   return {
     type: CLOSE_MODAL,
     payload: {
-      content: null
-    }
+      content: null,
+    },
   };
 };
 

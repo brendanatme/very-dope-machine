@@ -5,48 +5,54 @@
  * currently, if you use the text input, and press escape, this component throws an error
  */
 import React from 'react';
+import ReactDom from 'react-dom';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { CSSTransitionGroup } from 'react-transition-group';
 import KeyHandler, { KEYUP } from 'react-key-handler';
-import { closeModal } from '../../store/modal.state';
 import transition from '../../styles/mixins/open_wh.css';
-import DrumPadForm from '../drum-pad-form';
-import Hotkeys from '../hotkeys';
 import styles from './modal.component.css';
 
-const ChildrenTypes = {
-  DrumPadForm,
-  Hotkeys,
-};
+const modalRoot = document.createElement('div');
+modalRoot.id = 'modal-root';
+document.body.appendChild(modalRoot);
 
-class Modal extends React.Component {
+export default class Modal extends React.Component {
   static propTypes = {
-    closeModal: PropTypes.func,
-    content: PropTypes.object,
-    options: PropTypes.object,
+    children: PropTypes.object.isRequired,
+    onClose: PropTypes.func.isRequired,
+    show: PropTypes.bool.isRequired,
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.el = document.createElement('div');
+  }
+
+  componentDidMount() {
+    modalRoot.appendChild(this.el);
+  }
+
+  componentWillUnmount() {
+    modalRoot.removeChild(this.el);
   }
 
   closeModal = (e) => {
     e.preventDefault();
 
-    this.props.closeModal(this.props.content.onClose);
+    this.props.onClose();
   }
 
   render() {
-    const { content } = this.props;
-    let ContentComponent;
-    if (content) {
-      ContentComponent = ChildrenTypes[content.type];
-    }
-
-    return (
-      <div className={`${styles.modal} ${content ? styles.fade__in : ''}`}>
-        <KeyHandler
-          keyEventName={KEYUP}
-          keyValue="Escape"
-          onKeyHandle={this.closeModal}
-        />
+    return ReactDom.createPortal((
+      <div className={`${styles.modal} ${this.props.show ? styles.fade__in : ''}`}>
+        {this.props.show && (
+          <KeyHandler
+            keyEventName={KEYUP}
+            keyValue="Escape"
+            onKeyHandle={this.closeModal}
+          />
+        )}
         <div
           onClick={this.closeModal}
           className={styles.modal_bg}
@@ -56,26 +62,19 @@ class Modal extends React.Component {
           transitionName={transition}
           transitionEnterTimeout={750}
           transitionLeaveTimeout={500}>
-          {content && (
-            <div className={styles.content}>
-              <ContentComponent key={0} {...content.props} />
-            </div>
-          )}
+          <div className={styles.content}>
+            {this.props.children}
+          </div>
         </CSSTransitionGroup>
 
-        <a href="javascript:void(0)"
+        <a
+          className={styles.close}
+          href="javascript:void(0)"
           onClick={this.closeModal}
-          className={styles.close}>
+        >
           X (Esc)
         </a>
       </div>
-    );
+    ), this.el);
   }
 }
-
-const mapStateToProps = ({ modal }) => ({
-  content: modal.content,
-  options: modal.options,
-});
-
-export default connect(mapStateToProps, { closeModal })(Modal);

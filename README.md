@@ -2,6 +2,24 @@
 
 Very. Dope. Machine.
 
+## Development
+
+```bash
+$ npm run dev
+```
+
+## Production Build
+
+```bash
+$ npm run build
+```
+
+## Production server
+
+```bash
+$ npm start
+```
+
 ## TODO
 
 1. Rethink Modal

@@ -5,9 +5,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink, withRouter } from 'react-router-dom';
 import KeyHandler, { KEYDOWN } from 'react-key-handler';
-import { connect } from 'react-redux';
 import { Routes } from '../../constants';
-import { openModal } from '../../store/modal.state';
+import Hotkeys from '../hotkeys';
+import Modal from '../modal';
 import styles from './nav.component.css';
 
 class Nav extends React.Component {
@@ -15,7 +15,10 @@ class Nav extends React.Component {
     history: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,
-    openModal: PropTypes.func,
+  }
+
+  state = {
+    showHotkeys: false,
   }
 
   handleKeyDown = ({ key }) => {
@@ -27,7 +30,7 @@ class Nav extends React.Component {
       case "l":
         return this.props.history.push(Routes.PRESETS);
       case "h":
-        return this.props.openModal({ type: 'Hotkeys' });
+        return this.setState({ showHotkeys: true });
       default:
         return "components/Nav.handleKeyDown: no case found for keyDown";
     }
@@ -36,8 +39,10 @@ class Nav extends React.Component {
   handleClick = (e) => {
     e.preventDefault();
 
-    this.props.openModal({ type: 'Hotkeys' });
+    this.setState({ showHotkeys: true });
   }
+
+  handleClose = () => this.setState({ showHotkeys: false });
 
   render() {
     return (
@@ -87,9 +92,12 @@ class Nav extends React.Component {
           keyValue="h"
           onKeyHandle={this.handleKeyDown}
         />
+        <Modal onClose={this.handleClose} show={this.state.showHotkeys}>
+          <Hotkeys />
+        </Modal>
       </header>
     );
   }
 }
 
-export default withRouter(connect(null, { openModal })(Nav));
+export default withRouter(Nav);

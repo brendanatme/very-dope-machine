@@ -8,8 +8,10 @@ import { connect } from 'react-redux';
 import { hasTouch } from '../../helpers';
 import { withPlayer } from '../../effects/player';
 import { openModal } from '../../store/modal.state';
+import DrumPadForm from '../drum-pad-form';
 import MidiConnection from '../midi-connection';
 import PadCircle from '../pad-circle';
+import Modal from '../modal';
 import styles from './drum-pad.component.css';
 
 class DrumPad extends React.Component {
@@ -38,15 +40,9 @@ class DrumPad extends React.Component {
     }
 
     this.setState({ isEditing: true });
-
-    this.props.openModal({
-      type: 'DrumPadForm',
-      props: {
-        id: this.props.id
-      },
-      onClose: () => this.setState({ isEditing: false })
-    });
   }
+
+  stopEditing = () => this.setState({ isEditing: false });
 
   handleKeyDown = () => {
     // prevent unwanted drum rolls
@@ -89,9 +85,6 @@ class DrumPad extends React.Component {
     const isEditing = this.state.isEditing ? styles.is_editing : '';
     const isTouch = hasTouch() ? styles.has_touch : '';
 
-    // need reference to circle
-    // to imperatively call animations
-    // on keyDown
     return (
       <div
         onClick={this.handleClick}
@@ -104,6 +97,9 @@ class DrumPad extends React.Component {
         />
         <PadCircle ref={circle => { this.anim = circle; }} />
         <div className={styles.pad_key}>{this.props.inputKey}</div>
+        <Modal onClose={this.stopEditing} show={this.state.isEditing}>
+          <DrumPadForm id={this.props.id} />
+        </Modal>
       </div>
     );
   }
