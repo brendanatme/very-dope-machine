@@ -2,11 +2,21 @@
   loop
 */
 @import "../../styles/core/variables";
+@import "../../styles/core/utils";
 
 .loop {
-  height: 80px;
-  margin-bottom: 40px;
+  height: 60px;
+  margin-bottom: 30px;
   margin-top: 10px;
   text-align: center;
   width: var(--sidebar-width);
+}
+
+.label {
+  @apply --ib;
+  margin-right: 20px;
+}
+
+.ib {
+  @apply --ib;
 }

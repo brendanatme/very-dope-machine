@@ -1,7 +1,6 @@
 /*
   loop-play-button
 */
-.z3 {
-  position: relative;
-  z-index: 3;
+.container {
+  margin-left: 10px;
 }

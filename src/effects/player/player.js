@@ -36,7 +36,7 @@ export default class Player {
       },
     );
 
-    this.recorder = new Recorder(this.clickTrackBus);
+    this.recorder = new Recorder(this.clickTrackBus, this.playAllLoops, this.stopAllLoops);
     this.updateBpm(bpm);
   }
 
@@ -87,12 +87,12 @@ export default class Player {
     });
   }
 
-  stopAllLoops() {
+  stopAllLoops = () => {
     window.clearInterval(this.playAllInterval);
     this._stopAllLoops();
   }
 
-  playAllLoops() {
+  playAllLoops = () => {
     this._playAllLoops();
     this.playAllInterval = window.setInterval(() => {
       this._stopAllLoops();

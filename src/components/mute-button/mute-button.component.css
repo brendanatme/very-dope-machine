@@ -1,44 +1,41 @@
 /*
-  play-button
+  mute-button
 */
 @import "../../styles/core/variables";
 @import "../../styles/core/utils";
 @import "../../styles/mixins/bounce";
 @import "../../styles/components/button";
 
-.play_btn {
+.mute_btn {
   @apply --button;
 
   background: var(--green);
-  clip-path: polygon(0 0, 0% 100%, 100% 50%, 100% 49%);
-  height: 70px;
+  clip-path: polygon(0 26%, 35% 26%, 100% 0%, 100% 100%, 35% 74%, 0 74%);
+  height: 50px;
   margin: 10px;
   position: relative;
   transition: all .5s var(--ease-out);
-  width: 40px;
+  width: 29px;
+
+  &:hover {
+    @apply --bounce;
+  }
 
   &:before {
     background: var(--dblue);
-    clip-path: polygon(0 0, 0% 100%, 100% 50%, 100% 49%);
+    clip-path: polygon(0 26%, 35% 26%, 100% 0%, 100% 100%, 35% 74%, 0 74%);
     content: '';
     display: block;
-    height: 56px;
+    height: 34px;
     left: 3px;
     position: absolute;
-    top: 7px;
+    top: 8px;
     transition: all .25s var(--ease-out);
-    width: 32px;
+    width: 23px;
   }
 
-  &.is_playing {
-    clip-path: polygon(0 0, 0% 100%, 100% 100%, 100% 0%);
-  }
-  &.is_playing:before {
-    clip-path: polygon(0 0, 0% 100%, 100% 100%, 100% 0%);
-    height: 70px;
-    left: 13px;
-    top: 0;
-    width: 14px;
+  &.is_muted {
+    background: var(--gray);
   }
 }
 

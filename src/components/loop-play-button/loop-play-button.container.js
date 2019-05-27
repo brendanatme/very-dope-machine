@@ -32,7 +32,7 @@ class LoopPlayButton extends React.Component {
 
   render() {
     return (
-      <div className={styles.z3}>
+      <div className={styles.container}>
         <PlayButton
           handleClick={this.handlePlay}
           isPlaying={this.state.isPlaying}

@@ -19,8 +19,10 @@ export default class Recorder {
    */
   loopCount = 0;
 
-  constructor(clickTrackBus) {
+  constructor(clickTrackBus, playAllLoops, stopAllLoops) {
     this.clickTrackBus = clickTrackBus;
+    this.playAllLoops = playAllLoops;
+    this.stopAllLoops = stopAllLoops;
   }
 
   /**
@@ -120,9 +122,7 @@ export default class Recorder {
   }
 
   /**
-   * @todo when the recorder starts:
-   * - play a click track according to BPM
-   * - after 1 bar, begin recording
+   * startRecording
    * @param {function?} onStop
    */
   startRecording(onStop) {
@@ -135,6 +135,7 @@ export default class Recorder {
     this.playClickTrack();
 
     setTimeout(() => {
+      this.playAllLoops();
       this.recorder.start();
     }, bpmToMs(this.bpm) * 4);
   }
@@ -152,6 +153,7 @@ export default class Recorder {
    */
   stopRecording() {
     this.stopClickTrack();
+    this.stopAllLoops();
     this.recorder.stop();
 
     if (typeof this.onStop === 'function') {

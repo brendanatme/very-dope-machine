@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { withLoop } from '../../effects/player';
 import { removeLoop } from '../../store/loops.state';
 import CloseButton from '../close-button';
-import PlayButton from '../play-button';
+import MuteButton from '../mute-button';
 import styles from './loop.component.css';
 
 class Loop extends React.Component {
@@ -19,18 +19,18 @@ class Loop extends React.Component {
   }
 
   state = {
-    isPlaying: false,
+    isMuted: false,
   }
 
-  handlePlay = (e) => {
+  handleClick = (e) => {
     e.preventDefault();
 
-    this.state.isPlaying
-      ? this.props.loop.stop()
-      : this.props.loop.play();
+    this.state.isMuted
+      ? this.props.loop.unmute()
+      : this.props.loop.mute();
 
     this.setState({
-      isPlaying: !this.state.isPlaying,
+      isMuted: !this.state.isMuted,
     });
   }
 
@@ -47,12 +47,16 @@ class Loop extends React.Component {
   render() {
     return (
       <div className={styles.loop}>
-        <div>{this.props.name}</div>
-        <CloseButton handleClick={this.handleClose} />
-        <PlayButton
-          isPlaying={this.state.isPlaying}
-          handleClick={this.handlePlay}
-        />
+        <div className={styles.label}>{this.props.name}</div>
+        <div className={styles.ib}>
+          <CloseButton handleClick={this.handleClose} />
+        </div>
+        <div className={styles.ib}>
+          <MuteButton
+            isMuted={this.state.isMuted}
+            handleClick={this.handleClick}
+          />
+        </div>
       </div>
     );
   }
