@@ -29,7 +29,7 @@ export default class Player {
     this.clickTrackBus = new HTML5Bus(
       this.removeLoopBus,
       'click-track',
-      '/audio/Audiomatics - Perc 2.mp3',
+      '/audio/chime1a.mp3',
       {
         loop: false,
         volume: 0.1,
