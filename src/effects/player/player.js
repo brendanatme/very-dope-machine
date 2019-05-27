@@ -32,7 +32,7 @@ export default class Player {
       '/audio/chime1a.mp3',
       {
         loop: false,
-        volume: 0.1,
+        volume: 0.6,
       },
     );
 
