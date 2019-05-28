@@ -4,14 +4,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import KeyHandler, { KEYDOWN } from 'react-key-handler';
+import Modal from '../modal';
 import styles from './presets.component.css';
 
 const Presets = ({
   addPreset,
   handleKeyDown,
   loadPreset,
+  modalMessage,
+  onModalClose,
   presets,
   removePreset,
+  showModal,
 }) => (
   <div className={styles.center_screen}>
     {presets.all.length > 1 && (
@@ -57,6 +61,13 @@ const Presets = ({
         </li>
       </ul>
     </div>
+    <Modal show={showModal} onClose={onModalClose}>
+      <div className={`${styles.full_height} ${styles.vcenter}`}>
+        <div className={styles.vcenteree}>
+          <p>{modalMessage}</p>
+        </div>
+      </div>
+    </Modal>
   </div>
 );
 
@@ -64,8 +75,11 @@ Presets.propTypes = {
   addPreset: PropTypes.func,
   handleKeyDown: PropTypes.func,
   loadPreset: PropTypes.func,
+  modalMessage: PropTypes.string,
+  onModalClose: PropTypes.func,
   presets: PropTypes.object,
   removePreset: PropTypes.func,
+  showModal: PropTypes.bool,
 };
 
 export default Presets;

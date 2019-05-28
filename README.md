@@ -1,6 +1,16 @@
 # very-dope-machine
 
-Very. Dope. Machine.
+Very Dope Machine is a virtual drum machine.
+
+Hit the keys on your keyboard corresponding to the drum pads to play sounds. Or plug in your own MIDI controller and use that.
+
+Switch kits in the Kits screen to load in different sounds.
+
+Edit the pads by clicking on them to trim your sounds, load in different sounds, control the busses, and set the volume.
+
+Record loops by hitting the space bar.
+
+Save and load your settings in the Save/Load screen.
 
 ## Development
 
@@ -22,24 +32,10 @@ $ npm start
 
 ## TODO
 
-1. Rethink Modal
-1. use showOnMount HOC
-1. when recording is finished, create loop object
-
-    Loop object:
-      UI
-        play/stop
-        x (destroy)
-        v (down arrow, download)
-      Audio
-        HTML5Bus
-
-    break out play btn
-    remove from recorder 
-    build out loop component
-    include play button
-
-1. Upgrade React version and possibly migrate boilerplate
+1. Show usage dialog on arrival
+1. Fix modal close bug in Pads screen
+1. Add ability to download recorded track
+1. Migrate boilerplate
 
 ## Boilerplate: React slingshot
 

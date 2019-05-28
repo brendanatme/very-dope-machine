@@ -4,10 +4,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import KeyHandler, { KEYDOWN, KEYUP } from 'react-key-handler';
-import { connect } from 'react-redux';
 import { hasTouch } from '../../helpers';
 import { withPlayer } from '../../effects/player';
-import { openModal } from '../../store/modal.state';
 import DrumPadForm from '../drum-pad-form';
 import MidiConnection from '../midi-connection';
 import PadCircle from '../pad-circle';
@@ -27,10 +25,15 @@ class DrumPad extends React.Component {
   }
 
   state = {
+    isEditing: false,
     isPressed: false,
-    isEditing: false
   }
 
+  /**
+   * handleClick
+   * if on touch device, simulate key press
+   * else go into edit mode
+   */
   handleClick = (e) => {
     e.preventDefault();
 
@@ -42,7 +45,12 @@ class DrumPad extends React.Component {
     this.setState({ isEditing: true });
   }
 
-  stopEditing = () => this.setState({ isEditing: false });
+  stopEditing = () => {
+    console.log('stopEditing');
+    this.setState({ isEditing: false }, () => {
+      console.log('state updated');
+    });
+  }
 
   handleKeyDown = () => {
     // prevent unwanted drum rolls
@@ -107,4 +115,4 @@ class DrumPad extends React.Component {
 
 const BusDrumPad = withPlayer(DrumPad);
 
-export default connect(null, { openModal })(BusDrumPad);
+export default BusDrumPad;

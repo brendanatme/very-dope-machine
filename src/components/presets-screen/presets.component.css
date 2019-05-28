@@ -9,3 +9,16 @@
 .del {
   color: var(--red);
 }
+
+.full_height {
+  height: 100%;
+  position: relative;
+}
+
+.vcenter {
+  @apply --vcenterer;
+}
+
+.vcenteree {
+  @apply --vcenteree;
+}

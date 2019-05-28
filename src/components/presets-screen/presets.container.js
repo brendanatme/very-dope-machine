@@ -3,7 +3,9 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Routes } from '../../constants';
 import { getNextFromCollection, getPreviousFromCollection } from '../../helpers';
 import { addPreset, removePreset, loadPreset } from '../../store/presets.state';
 import PresetsComponent from './presets.component';
@@ -11,24 +13,59 @@ import PresetsComponent from './presets.component';
 class Presets extends React.Component {
   static propTypes = {
     addPreset: PropTypes.func,
-    removePreset: PropTypes.func,
+    history: PropTypes.object.isRequired,
     loadPreset: PropTypes.func,
-    presets: PropTypes.object
+    location: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
+    removePreset: PropTypes.func,
+    presets: PropTypes.object,
   }
+
+  state = {
+    modalMessage: '',
+    showModal: false,
+  }
+
+  showMessage = (modalMessage, redirectToPads = false) => {
+    this.setState({
+      showModal: true,
+      modalMessage,
+    }, () => {
+      setTimeout(() => {
+        this.setState({
+          modalMessage: '',
+          showModal: false,
+        });
+        if (redirectToPads) {
+          setTimeout(() => {
+            this.props.history.push(Routes.PADS);
+          }, 250);
+        }
+      }, 3000);
+    });
+  }
+
+  closeModal = () => this.setState({
+    modalMessage: '',
+    showModal: false,
+  });
 
   addPreset = (e) => {
     e.preventDefault();
     this.props.addPreset(this.props.presets.all.length);
+    this.showMessage('Preset successfully saved!');
   }
 
   removePreset = (i) => (e) => {
     e.preventDefault();
     this.props.removePreset(i);
+    this.showMessage('Preset successfully removed!');
   }
 
   loadPreset = (i) => (e) => {
     e.preventDefault();
     this.props.loadPreset(i);
+    this.showMessage('Preset successfully loaded!', true);
   }
 
   loadPreviousPreset() {
@@ -58,8 +95,11 @@ class Presets extends React.Component {
         addPreset={this.addPreset}
         handleKeyDown={this.handleKeyDown}
         loadPreset={this.loadPreset}
+        modalMessage={this.state.modalMessage}
+        onModalClose={this.closeModal}
         presets={this.props.presets}
         removePreset={this.removePreset}
+        showModal={this.state.showModal}
       />
     );
   }
@@ -67,4 +107,4 @@ class Presets extends React.Component {
 
 const mapStateToProps = ({ presets }) => ({ presets });
 
-export default connect(mapStateToProps, { addPreset, removePreset, loadPreset })(Presets);
+export default withRouter(connect(mapStateToProps, { addPreset, removePreset, loadPreset })(Presets));

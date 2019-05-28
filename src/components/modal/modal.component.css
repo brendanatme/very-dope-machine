@@ -20,10 +20,24 @@
 .content {
   @apply --vcenteree;
 
-  background: rgba(0, 0, 0, .6);
+  background: rgba(0, 0, 0, .85);
   border: 1px solid rgba(var(--white), 1);
   border-radius: 10px;
+  height: 1px;
   overflow: hidden;
+  width: 1px;
+}
+.content * {
+  opacity: 0;
+}
+.fade__in .content {
+  height: 434px;
+  width: 492px;
+  transition: width .25s var(--ease-out), height .5s var(--ease-out) .25s;
+}
+.fade__in .content * {
+  opacity: 1;
+  transition: opacity .75s .5s;
 }
 
 .close {

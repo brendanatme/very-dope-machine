@@ -1,7 +1,7 @@
 {
   "name": "very-dope-machine",
   "version": "0.1.0",
-  "description": "Very. Dope. Machine.",
+  "description": "Very Dope Machine is a virtual drum machine.",
   "engines": {
     "node": "8.9.3"
   },

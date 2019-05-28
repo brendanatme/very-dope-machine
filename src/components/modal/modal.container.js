@@ -12,9 +12,7 @@ import KeyHandler, { KEYUP } from 'react-key-handler';
 import transition from '../../styles/mixins/open_wh.css';
 import styles from './modal.component.css';
 
-const modalRoot = document.createElement('div');
-modalRoot.id = 'modal-root';
-document.body.appendChild(modalRoot);
+let modalCount = 0;
 
 export default class Modal extends React.Component {
   static propTypes = {
@@ -26,19 +24,24 @@ export default class Modal extends React.Component {
   constructor(props) {
     super(props);
 
+    modalCount++;
+
     this.el = document.createElement('div');
+    this.el.id = `modal-root-${modalCount}`;
   }
 
   componentDidMount() {
-    modalRoot.appendChild(this.el);
+    document.body.appendChild(this.el);
   }
 
   componentWillUnmount() {
-    modalRoot.removeChild(this.el);
+    document.body.removeChild(this.el);
   }
 
   closeModal = (e) => {
     e.preventDefault();
+
+    console.log('closeModal');
 
     this.props.onClose();
   }
@@ -53,6 +56,7 @@ export default class Modal extends React.Component {
             onKeyHandle={this.closeModal}
           />
         )}
+
         <div
           onClick={this.closeModal}
           className={styles.modal_bg}
