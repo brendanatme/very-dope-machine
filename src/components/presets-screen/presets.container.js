@@ -26,7 +26,7 @@ class Presets extends React.Component {
     showModal: false,
   }
 
-  showMessage = (modalMessage, redirectToPads = false) => {
+  showMessage = (modalMessage, redirectTo = '') => {
     this.setState({
       showModal: true,
       modalMessage,
@@ -36,9 +36,9 @@ class Presets extends React.Component {
           modalMessage: '',
           showModal: false,
         });
-        if (redirectToPads) {
+        if (redirectTo) {
           setTimeout(() => {
-            this.props.history.push(Routes.PADS);
+            this.props.history.push(redirectTo);
           }, 250);
         }
       }, 3000);
@@ -65,7 +65,7 @@ class Presets extends React.Component {
   loadPreset = (i) => (e) => {
     e.preventDefault();
     this.props.loadPreset(i);
-    this.showMessage('Preset successfully loaded!', true);
+    this.showMessage('Preset successfully loaded!', Routes.PADS);
   }
 
   loadPreviousPreset() {

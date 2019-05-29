@@ -7,9 +7,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import PropTypes from 'prop-types';
-import { CSSTransitionGroup } from 'react-transition-group';
 import KeyHandler, { KEYUP } from 'react-key-handler';
-import transition from '../../styles/mixins/open_wh.css';
 import styles from './modal.component.css';
 
 let modalCount = 0;
@@ -41,8 +39,6 @@ export default class Modal extends React.Component {
   closeModal = (e) => {
     e.preventDefault();
 
-    console.log('closeModal');
-
     this.props.onClose();
   }
 
@@ -62,14 +58,9 @@ export default class Modal extends React.Component {
           className={styles.modal_bg}
         />
 
-        <CSSTransitionGroup
-          transitionName={transition}
-          transitionEnterTimeout={750}
-          transitionLeaveTimeout={500}>
-          <div className={styles.content}>
-            {this.props.children}
-          </div>
-        </CSSTransitionGroup>
+        <div className={styles.content}>
+          {this.props.children}
+        </div>
 
         <a
           className={styles.close}

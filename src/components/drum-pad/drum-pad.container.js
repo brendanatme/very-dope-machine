@@ -45,12 +45,7 @@ class DrumPad extends React.Component {
     this.setState({ isEditing: true });
   }
 
-  stopEditing = () => {
-    console.log('stopEditing');
-    this.setState({ isEditing: false }, () => {
-      console.log('state updated');
-    });
-  }
+  stopEditing = () => this.setState({ isEditing: false });
 
   handleKeyDown = () => {
     // prevent unwanted drum rolls
@@ -94,21 +89,23 @@ class DrumPad extends React.Component {
     const isTouch = hasTouch() ? styles.has_touch : '';
 
     return (
-      <div
-        onClick={this.handleClick}
-        className={`${styles.drum_pad} ${isPressed} ${isEditing} ${isTouch}`}>
-        {this.bindKeys()}
-        <MidiConnection
-          inputKey={this.props.midiInput}
-          onKeyDown={this.handleKeyDown}
-          onKeyUp={this.handleKeyUp}
-        />
-        <PadCircle ref={circle => { this.anim = circle; }} />
-        <div className={styles.pad_key}>{this.props.inputKey}</div>
+      <span>
+        <div
+          onClick={this.handleClick}
+          className={`${styles.drum_pad} ${isPressed} ${isEditing} ${isTouch}`}>
+          {this.bindKeys()}
+          <MidiConnection
+            inputKey={this.props.midiInput}
+            onKeyDown={this.handleKeyDown}
+            onKeyUp={this.handleKeyUp}
+          />
+          <PadCircle ref={circle => { this.anim = circle; }} />
+          <div className={styles.pad_key}>{this.props.inputKey}</div>
+        </div>
         <Modal onClose={this.stopEditing} show={this.state.isEditing}>
           <DrumPadForm id={this.props.id} />
         </Modal>
-      </div>
+      </span>
     );
   }
 }
