@@ -34,8 +34,6 @@ $ npm start
 
 ## TODO
 
-1. Show usage dialog on arrival
-1. Fix modal close bug in Pads screen
 1. Add ability to download recorded track
 1. Migrate boilerplate
 
