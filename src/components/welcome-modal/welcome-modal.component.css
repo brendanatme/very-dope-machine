@@ -1,0 +1,20 @@
+.rte {
+  padding: 20px;
+}
+
+.rte p,
+.rte ul {
+  text-transform: uppercase;
+}
+
+.rte p {
+  margin-bottom: 30px;
+}
+
+.rte ul {
+  text-align: left;
+}
+
+.rte li {
+  margin-bottom: 15px;
+}

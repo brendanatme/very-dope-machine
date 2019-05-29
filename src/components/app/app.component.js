@@ -11,6 +11,7 @@ import KitSwitcherScreen from '../kit-switcher-screen';
 import PresetsScreen from '../presets-screen';
 import Nav from '../nav';
 import styles from './app.component.css';
+import WelcomeModal from '../welcome-modal';
 
 const App = () => (
   <div className={styles.app}>
@@ -25,7 +26,7 @@ const App = () => (
         <Route path={Routes.PRESETS} component={PresetsScreen} />
       </CSSTransitionGroup>
     </main>
-    <div id="modal-root" />
+    <WelcomeModal />
   </div>
 );
 

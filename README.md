@@ -2,7 +2,9 @@
 
 Very Dope Machine is a virtual drum machine.
 
-Hit the keys on your keyboard corresponding to the drum pads to play sounds. Or plug in your own MIDI controller and use that.
+Hit the keys on your keyboard corresponding to the drum pads to play sounds.
+
+Or plug in your own MIDI controller and use that.
 
 Switch kits in the Kits screen to load in different sounds.
 
